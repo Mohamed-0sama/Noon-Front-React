@@ -6,18 +6,83 @@ import "./header.scss";
 const Header = () => {
   const [categories, setCategories] = useState([
     {
+      id: "1",
       mainCat: "Electronics",
       subCat: ["TV", "computer", "mobiles", "tablet"],
+      brands: ["TV", "computer", "mobiles", "tablet"],
+      brandsImg: [
+        "images/floating nav/drop-brand-01.png",
+        "images/floating nav/drop-brand-02.png",
+        "images/floating nav/drop-brand-03.png",
+        "images/floating nav/drop-brand-04.png",
+        "images/floating nav/drop-brand-05.png",
+        "images/floating nav/drop-brand-06.png",
+        "images/floating nav/drop-brand-08.png",
+        "images/floating nav/drop-brand-09.png",
+        "images/floating nav/drop-brand-10.png",
+      ],
+      catImg: [
+        "images/floating nav/en_drop-01.png",
+        "images/floating nav/en_drop-02.png",
+      ],
       link: "https://ant.design/components/dropdown",
     },
     {
+      id: "2",
       mainCat: "clothes",
       subCat: ["TV2", "computer2", "mobiles2", "tablet2"],
+      brands: ["TV3", "computer3", "mobiles3", "tablet3"],
+      brandsImg: [
+        "images/men/drop-brand-01.png",
+        "images/men/drop-brand-02.png",
+        "images/men/drop-brand-03.png",
+        "images/men/drop-brand-04.png",
+        "images/men/drop-brand-05.png",
+        "images/men/drop-brand-06.png",
+        "images/men/drop-brand-08.png",
+        "images/men/drop-brand-09.png",
+        "images/men/drop-brand-11.png",
+      ],
+      catImg: ["images/men/en_drop-01.png", "images/men/en_drop-02.png"],
+
       link: "https://ant.design/components/dropdown",
     },
-  
+    {
+      id: "3",
+      mainCat: "Toys",
+      subCat: ["boy", "girl", "small toys", "big toys", "adult toys"],
+      brands: ["toys", "toys", "toys", "toys"],
+      brandsImg: [
+        "images/men/drop-brand-01.png",
+        "images/men/drop-brand-02.png",
+        "images/men/drop-brand-03.png",
+        "images/men/drop-brand-04.png",
+        "images/men/drop-brand-05.png",
+        "images/men/drop-brand-06.png",
+        "images/men/drop-brand-08.png",
+        "images/men/drop-brand-09.png",
+        "images/men/drop-brand-11.png",
+      ],
+      catImg: ["images/men/en_drop-01.png", "images/men/en_drop-02.png"],
+      link: "https://ant.design/components/dropdown",
+    },
   ]);
-  // const [subCategories, setSubCategories] = useState([]);
+  // const [showCategories, setShowCategories] = useState([
+  //   {
+  //     brandsImg: [
+  //       "images/men/drop-brand-01.png",
+  //       "images/men/drop-brand-02.png",
+  //       "images/men/drop-brand-03.png",
+  //       "images/men/drop-brand-04.png",
+  //       "images/men/drop-brand-05.png",
+  //       "images/men/drop-brand-06.png",
+  //       "images/men/drop-brand-08.png",
+  //       "images/men/drop-brand-09.png",
+  //       "images/men/drop-brand-011.png",
+  //     ],
+  //     catImg: [],
+  //   },
+  // ]);
   const elemRef_show__categories = useRef();
   const elemRef_second__navbar = useRef();
   const elemRef_subCat = useRef();
@@ -33,6 +98,16 @@ const Header = () => {
     } else {
       elemRef_second__navbar.current.style.marginLeft = "-160px";
     }
+  };
+  const [x, setX] = useState(1);
+  const subCatChanged = (catID) => {
+    setX(catID);
+    // console.log("x = ", x)
+    // console.log("id = ",catID);
+  };
+  const CatChanged = (catID) => {
+    setX(catID);
+    elemRef_show__categories.current.style.display = "flex";
   };
   return (
     <div>
@@ -160,7 +235,10 @@ const Header = () => {
               {categories.map((cat) => {
                 return (
                   <>
-                    <li className="nav-item">
+                    <li
+                      className="nav-item"
+                      onMouseOver={() => subCatChanged(cat.id)}
+                    >
                       <a className="nav-link" href={cat.link}>
                         {cat.mainCat}
                       </a>
@@ -172,7 +250,7 @@ const Header = () => {
             <div className="dropdownDiv">
               <div className="dropdownDivOne"></div>
               <div className="dropdownDivTwo">
-                <h4>Electronics</h4>
+                <h4>{categories[x - 1].mainCat}</h4>
                 <hr className="m-2" />
                 <div className="d-flex">
                   <div className="w-50">
@@ -180,34 +258,24 @@ const Header = () => {
                     {/* All Catogories => subCategories */}
                     <ul className="nav flex-column">
                       {categories.map((cat) => {
+                        // console.log(cat.id);
                         return (
                           <>
-                            {
-                              <li className="nav-item">
-                                <a className="nav-link" href={cat.link}>
-                                  {cat.subCat.map((subCategory) => {
-                                    return(
-                                    <>
-                                      
-                                        <li className="nav-item">
-                                          <a
-                                            className="nav-link"
-                                            href={cat.link}
-                                          >
-                                            {subCategory}
-                                          </a>
-                                        </li>
-                                      
-                                    </>)
-                                  })}
-                                </a>
-                              </li>
-                            }
-                            {/* <li className="nav-item">
-                              <a className="nav-link" href={cat.link}>
-                                
-                              </a>
-                            </li> */}
+                            {cat.id === x &&
+                              cat.subCat.map((subCategory) => {
+                                return (
+                                  <>
+                                    <li
+                                      className="nav-item"
+                                      ref={elemRef_subCat}
+                                    >
+                                      <a className="nav-link" href={cat.link}>
+                                        {subCategory}
+                                      </a>
+                                    </li>
+                                  </>
+                                );
+                              })}
                           </>
                         );
                       })}
@@ -216,45 +284,43 @@ const Header = () => {
                   <div className="">
                     <h6>Top Brands</h6>
                     <ul className="nav flex-column">
-                      <li className="nav-item">
-                        <a
-                          className="nav-link active"
-                          aria-current="page"
-                          href="https://ant.design/components/dropdown"
-                        >
-                          Active
-                        </a>
-                      </li>
-                      <li className="nav-item">
-                        <a
-                          className="nav-link"
-                          href="https://ant.design/components/dropdown"
-                        >
-                          Link
-                        </a>
-                      </li>
-                      <li className="nav-item">
-                        <a
-                          className="nav-link"
-                          href="https://ant.design/components/dropdown"
-                        >
-                          Link
-                        </a>
-                      </li>
+                      {categories.map((cat) => {
+                        // console.log(cat.id);
+                        return (
+                          <>
+                            {cat.id === x &&
+                              cat.brands.map((subCategory) => {
+                                return (
+                                  <>
+                                    <li
+                                      className="nav-item"
+                                      ref={elemRef_subCat}
+                                    >
+                                      <a className="nav-link" href={cat.link}>
+                                        {subCategory}
+                                      </a>
+                                    </li>
+                                  </>
+                                );
+                              })}
+                          </>
+                        );
+                      })}
                     </ul>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
+          {/* we stopped here */}
           <ul className="nav">
             {categories.map((cat) => {
               return (
                 <>
                   <li
                     className="nav-item"
-                    onMouseOver={mouseOver}
+                    // onMouseOver={mouseOver}
+                    onMouseOver={() => CatChanged(cat.id)}
                     onMouseOut={mouseOut}
                   >
                     <a className="nav-link" href={cat.link}>
@@ -275,111 +341,97 @@ const Header = () => {
               <div className="col-2">
                 <h6>CATEGORIES</h6>
                 <ul className="nav flex-column">
-                  <li className="nav-item">
-                    <a
-                      className="nav-link"
-                      href="https://ant.design/components/dropdown"
-                    >
-                      Link
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a
-                      className="nav-link"
-                      href="https://ant.design/components/dropdown"
-                    >
-                      Link
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a
-                      className="nav-link"
-                      href="https://ant.design/components/dropdown"
-                    >
-                      Link
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a
-                      className="nav-link"
-                      href="https://ant.design/components/dropdown"
-                    >
-                      Link
-                    </a>
-                  </li>
+                {categories.map((cat) => {
+                      // console.log(cat.id);
+                      return (
+                        <>
+                          {cat.id === x &&
+                            cat.subCat.map((subCat) => {
+                              console.log(subCat);
+                              return (
+                                <>
+                                  <li className="nav-item" ref={elemRef_subCat}>
+                                    <a className="nav-link" href={cat.link}>
+                                      {subCat}
+                                    </a>
+                                  </li>
+                                </>
+                              );
+                            })}
+                        </>
+                      );
+                    })}
                 </ul>
               </div>
               <div className="col-4">
                 <h6>TOP BRANDS</h6>
-                <div className="photos">
-                  <a href="https://ant.design/components/dropdown">
-                    <img
-                      src="../../../assets/header/nav (from DB)/drop-brand-01.png"
-                      className="img-fluid"
-                      alt=""
-                    />
-                  </a>
-                  <a href="https://ant.design/components/dropdown">
-                    <img
-                      src="../../../assets/header/nav (from DB)/drop-brand-02.png"
-                      className="img-fluid"
-                      alt=""
-                    />
-                  </a>
-                  <a href="https://ant.design/components/dropdown">
-                    <img
-                      src="../../../assets/header/nav (from DB)/drop-brand-03.png"
-                      className="img-fluid"
-                      alt=""
-                    />
-                  </a>
-                  <a href="https://ant.design/components/dropdown">
-                    <img
-                      src="../../../assets/header/nav (from DB)/drop-brand-04.png"
-                      className="img-fluid"
-                      alt=""
-                    />
-                  </a>
-                  <a href="https://ant.design/components/dropdown">
-                    <img
-                      src="../../../assets/header/nav (from DB)/drop-brand-05.png"
-                      className="img-fluid"
-                      alt=""
-                    />
-                  </a>
-                  <a href="https://ant.design/components/dropdown">
-                    <img
-                      src="../../../assets/header/nav (from DB)/drop-brand-06.png"
-                      className="img-fluid"
-                      alt=""
-                    />
-                  </a>
-                  <a href="https://ant.design/components/dropdown">
-                    <img
-                      src="../../../assets/header/nav (from DB)/drop-brand-08.png"
-                      className="img-fluid"
-                      alt=""
-                    />
-                  </a>
-                  <a href="https://ant.design/components/dropdown">
-                    <img
-                      src="../../../assets/header/nav (from DB)/drop-brand-09.png"
-                      className="img-fluid"
-                      alt=""
-                    />
-                  </a>
-                  <a href="https://ant.design/components/dropdown">
-                    <img
-                      src="../../../assets/header/nav (from DB)/drop-brand-10.png"
-                      className="img-fluid"
-                      alt=""
-                    />
-                  </a>
+                <div>
+                  <ul className="photos">
+                    {/* showCategories brand Images */}
+                    {categories.map((cat) => {
+                      // console.log(cat.id);
+                      return (
+                        <>
+                          {cat.id === x &&
+                            cat.brandsImg.map((img) => {
+                              console.log(img);
+                              return (
+                                <>
+                                  <li className="nav-item" ref={elemRef_subCat}>
+                                    <a className="nav-link" href={cat.link}>
+                                      <img
+                                        src={img}
+                                        className="img-fluid"
+                                        alt="brand img"
+                                      />
+                                    </a>
+                                  </li>
+                                </>
+                              );
+                            })}
+                        </>
+                      );
+                    })}
+                  </ul>
                 </div>
               </div>
               <div className="col-6">
                 <div className="last2__photos h-100">
-                  <div>
+                  {/* <div> */}
+                    {/* <ul> */}
+                      {/* showCategories brand Images */}
+                      {categories.map((cat) => {
+                        // console.log(cat.id);
+                        return (
+                          <>
+                            {cat.id === x &&
+                              cat.catImg.map((img) => {
+                                console.log(img);
+                                return (
+                                  <>
+                                    {/* <li
+                                      className="nav-item"
+                                      
+                                    > */}
+                                      <div ref={elemRef_subCat}>
+                                        <a className="nav-link" href={cat.link}>
+                                          <img
+                                            src={img}
+                                            className="img-fluid h-100"
+                                            alt="cat img"
+                                          />
+                                        </a>
+                                      </div>
+                                    {/* </li> */}
+                                  </>
+                                );
+                              })}
+                          </>
+                        );
+                      })}
+                    {/* </ul> */}
+                  {/* </div> */}
+                  {/* <div>
                     <a href="https://ant.design/components/dropdown">
                       <img
                         src="../../../assets/header/nav (from DB)/en_drop-01.png"
@@ -387,8 +439,8 @@ const Header = () => {
                         alt=""
                       />
                     </a>
-                  </div>
-                  <div>
+                  </div> */}
+                  {/* <div>
                     <a href="https://ant.design/components/dropdown">
                       <img
                         src="../../../assets/header/nav (from DB)/en_drop-02.png"
@@ -396,7 +448,7 @@ const Header = () => {
                         alt=""
                       />
                     </a>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

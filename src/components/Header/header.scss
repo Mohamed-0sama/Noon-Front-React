@@ -114,7 +114,7 @@
   
   @media (max-width: 768px) {
     header {
-      .first__navbar {
+     /* .first__navbar {
         ul {
           li {
             a {
@@ -132,6 +132,7 @@
   
         }
       }
+      */
   
       .second__navbar {
         display: flex;
@@ -164,16 +165,16 @@
         left: 0;
         width: 100%;
         ul {
-          li {
-            a {
-              span {
-              }
-            }
-          }
-          li.header__li__search {
-            .header__search {
-            }
-          }
+          // li {
+          //   a {
+          //     span {
+          //     }
+          //   }
+          // }
+          // li.header__li__search {
+          //   .header__search {
+          //   }
+          // }
           li.language::after,
           li.sign-in::after {
             display: none;

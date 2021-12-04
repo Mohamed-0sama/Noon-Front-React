@@ -15,91 +15,35 @@ export const mouseOutContext = React.createContext();
 export const elemRef_show__categoriesContext = React.createContext();
 const Header = () => {
   const [x, setX] = useState(1);
-  const [categories, setCategories] = useState([
-    {
-      id: "1",
-      mainCat: "Electronics",
-      subCat: ["TV", "computer", "mobiles", "tablet"],
-      brands: ["TV", "computer", "mobiles", "tablet"],
-      brandsImg: [
-        "images/floating nav/drop-brand-01.png",
-        "images/floating nav/drop-brand-02.png",
-        "images/floating nav/drop-brand-03.png",
-        "images/floating nav/drop-brand-04.png",
-        "images/floating nav/drop-brand-05.png",
-        "images/floating nav/drop-brand-06.png",
-        "images/floating nav/drop-brand-08.png",
-        "images/floating nav/drop-brand-09.png",
-        "images/floating nav/drop-brand-10.png",
-      ],
-      catImg: [
-        "images/floating nav/en_drop-01.png",
-        "images/floating nav/en_drop-02.png",
-      ],
-      link: "https://ant.design/components/dropdown",
-    },
-    {
-      id: "2",
-      mainCat: "clothes",
-      subCat: ["TV2", "computer2", "mobiles2", "tablet2"],
-      brands: ["TV3", "computer3", "mobiles3", "tablet3"],
-      brandsImg: [
-        "images/men/drop-brand-01.png",
-        "images/men/drop-brand-02.png",
-        "images/men/drop-brand-03.png",
-        "images/men/drop-brand-04.png",
-        "images/men/drop-brand-05.png",
-        "images/men/drop-brand-06.png",
-        "images/men/drop-brand-08.png",
-        "images/men/drop-brand-09.png",
-        "images/men/drop-brand-11.png",
-      ],
-      catImg: ["images/men/en_drop-01.png", "images/men/en_drop-02.png"],
-
-      link: "https://ant.design/components/dropdown",
-    },
-    {
-      id: "3",
-      mainCat: "Toys",
-      subCat: ["boy", "girl", "small toys", "big toys", "adult toys"],
-      brands: ["toys", "toys", "toys", "toys"],
-      brandsImg: [
-        "images/men/drop-brand-01.png",
-        "images/men/drop-brand-02.png",
-        "images/men/drop-brand-03.png",
-        "images/men/drop-brand-04.png",
-        "images/men/drop-brand-05.png",
-        "images/men/drop-brand-06.png",
-        "images/men/drop-brand-08.png",
-        "images/men/drop-brand-09.png",
-        "images/men/drop-brand-11.png",
-      ],
-      catImg: ["images/men/en_drop-01.png", "images/men/en_drop-02.png"],
-      link: "https://ant.design/components/dropdown",
-    },
-  ]);
-  // const [categories, setCategories] = useState([])
-  // useEffect(() => {
-  //   // fetch("http://localhost:4000/category")
-  //   axios.get("http://localhost:4500/categories") // why only accepets json server
-  // // .then(response => response)
-  // // .then(json => setCategories(json))
-  // .then(function (response) {
-  //   // handle success
-  //   setCategories(response.data)
-  //   console.log(response.data);
-  // })
-  // .catch(function (error) {
-  //   // handle error
-  //   console.log(error);
-  // })
-  // // console
-  //   return () => {
-  //     // cleanup
-  //   }
-  // }, [categories])
-  // const [showCategories, setShowCategories] = useState([
+  // const imagesUrl = "https://noon-ecommerce.herokuapp.com/images/"
+  // const [categories, setCategories] = useState([
   //   {
+  //     id: "1",
+  //     mainCat: "Electronics",
+  //     subCat: ["TV", "computer", "mobiles", "tablet"],
+  //     brands: ["TV", "computer", "mobiles", "tablet"],
+  //     brandsImg: [
+  //       "images/floating nav/drop-brand-01.png",
+  //       "images/floating nav/drop-brand-02.png",
+  //       "images/floating nav/drop-brand-03.png",
+  //       "images/floating nav/drop-brand-04.png",
+  //       "images/floating nav/drop-brand-05.png",
+  //       "images/floating nav/drop-brand-06.png",
+  //       "images/floating nav/drop-brand-08.png",
+  //       "images/floating nav/drop-brand-09.png",
+  //       "images/floating nav/drop-brand-10.png",
+  //     ],
+  //     catImg: [
+  //       "images/floating nav/en_drop-01.png",
+  //       "images/floating nav/en_drop-02.png",
+  //     ],
+  //     link: "https://ant.design/components/dropdown",
+  //   },
+  //   {
+  //     id: "2",
+  //     mainCat: "clothes",
+  //     subCat: ["TV2", "computer2", "mobiles2", "tablet2"],
+  //     brands: ["TV3", "computer3", "mobiles3", "tablet3"],
   //     brandsImg: [
   //       "images/men/drop-brand-01.png",
   //       "images/men/drop-brand-02.png",
@@ -109,11 +53,49 @@ const Header = () => {
   //       "images/men/drop-brand-06.png",
   //       "images/men/drop-brand-08.png",
   //       "images/men/drop-brand-09.png",
-  //       "images/men/drop-brand-011.png",
+  //       "images/men/drop-brand-11.png",
   //     ],
-  //     catImg: [],
+  //     catImg: ["images/men/en_drop-01.png", "images/men/en_drop-02.png"],
+
+  //     link: "https://ant.design/components/dropdown",
+  //   },
+  //   {
+  //     id: "3",
+  //     mainCat: "Toys",
+  //     subCat: ["boy", "girl", "small toys", "big toys", "adult toys"],
+  //     brands: ["toys", "toys", "toys", "toys"],
+  //     brandsImg: [
+  //       "images/men/drop-brand-01.png",
+  //       "images/men/drop-brand-02.png",
+  //       "images/men/drop-brand-03.png",
+  //       "images/men/drop-brand-04.png",
+  //       "images/men/drop-brand-05.png",
+  //       "images/men/drop-brand-06.png",
+  //       "images/men/drop-brand-08.png",
+  //       "images/men/drop-brand-09.png",
+  //       "images/men/drop-brand-11.png",
+  //     ],
+  //     catImg: ["images/men/en_drop-01.png", "images/men/en_drop-02.png"],
+  //     link: "https://ant.design/components/dropdown",
   //   },
   // ]);
+  const [categories, setCategories] = useState([])
+  useEffect(() => {
+    axios.get("http://localhost:3000/categories") // why only accepets json server
+  .then(function (response) {
+    // handle success
+    setCategories(response.data)
+    console.log(response.data);
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  // console
+    return () => {
+      // cleanup
+    }
+  }, [])
   const elemRef_show__categories = useRef();
   const elemRef_second__navbar = useRef();
   // const elemRef_subCat = useRef();

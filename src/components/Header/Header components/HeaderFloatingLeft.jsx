@@ -23,7 +23,7 @@ const HeaderFloatingLeft = () => {
                 return (
                   <>
                     <li
-                      className="nav-item"
+                      className="nav-item text-start"
                       onMouseOver={() => subCatChanged(cat.id)}
                     >
                       <a className="nav-link" href={cat.link}>
@@ -37,13 +37,13 @@ const HeaderFloatingLeft = () => {
             <div className="dropdownDiv">
               <div className="dropdownDivOne"></div>
               <div className="dropdownDivTwo">
-                <h4>{categories[x - 1].mainCat}</h4>
+                {/* <h4>{ categories[x - 1].mainCat}</h4> */}
                 <hr className="m-2" />
                 <div className="d-flex">
                   <div className="w-50">
-                    <h6>Most Popular</h6>
+                    <h6 className="text-start ms-3">Most Popular</h6>
                     {/* All Catogories => subCategories */}
-                    <ul className="nav flex-column">
+                    <ul className="nav flex-column align-items-start">
                       {categories.map((cat) => {
                         // console.log(cat.id);
                         return (
@@ -68,9 +68,9 @@ const HeaderFloatingLeft = () => {
                       })}
                     </ul>
                   </div>
-                  <div className="">
-                    <h6>Top Brands</h6>
-                    <ul className="nav flex-column">
+                  <div className="w-50">
+                    <h6 className="text-start ms-3">Top Brands</h6>
+                    <ul className="nav flex-column align-items-start">
                       {categories.map((cat) => {
                         // console.log(cat.id);
                         return (

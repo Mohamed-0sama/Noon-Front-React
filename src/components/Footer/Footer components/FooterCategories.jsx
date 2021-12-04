@@ -13,7 +13,7 @@ const FooterCategories = () => {
                 return (
                 <>
                 <div class="col-lg-2 col-md-4 col-sm-6">
-                <h6 class="">{category.mainCat}</h6>
+                <h6 class="mt-3">{category.mainCat}</h6>
                 <ul class="nav flex-column" style={{ fontSize: "13px" }}>
                   {category.subCat.map((subCategory)=>{
                     return(

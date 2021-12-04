@@ -3,6 +3,7 @@ import { categoriesContext, subCatChangedContext, xContext, mouseOverContext, mo
 
     
 const HeaderFloatingShowCategories = () => {
+  const imagesUrl = "https://noon-ecommerce.herokuapp.com/images/"
     const categories = useContext(categoriesContext)
     const subCatChanged = useContext(subCatChangedContext)
     const x = useContext(xContext)
@@ -20,7 +21,7 @@ const HeaderFloatingShowCategories = () => {
             <div className="row" style={{ flex: 1 }}>
               <div className="col-2">
                 <h6>CATEGORIES</h6>
-                <ul className="nav flex-column">
+                <ul className="nav flex-column align-items-start">
                   {categories.map((cat) => {
                     // console.log(cat.id);
                     return (
@@ -30,7 +31,7 @@ const HeaderFloatingShowCategories = () => {
                             console.log(subCategory);
                             return (
                               <>
-                                <li className="nav-item">
+                                <li className="nav-item text-start">
                                   <a className="nav-link" href={cat.link}>
                                     {subCategory}
                                   </a>
@@ -59,7 +60,8 @@ const HeaderFloatingShowCategories = () => {
                                   <li className="nav-item">
                                     <a className="nav-link" href={cat.link}>
                                       <img
-                                        src={brandImg}
+                                        src={imagesUrl+brandImg} // works fine
+                                        // src={imagesUrl+'2.jpg'}
                                         className="img-fluid"
                                         alt="brand img"
                                       />
@@ -75,7 +77,7 @@ const HeaderFloatingShowCategories = () => {
                 </div>
               </div>
               <div className="col-6">
-                <div className="last2__photos h-100">
+                <div className="last2__photos" style={{maxHeight:"350px"}}>
                   {/* <div> */}
                   {/* <ul> */}
                   {/* showCategories brand Images */}
@@ -93,9 +95,9 @@ const HeaderFloatingShowCategories = () => {
                                       
                                     > */}
                                 <div>
-                                  <a className="nav-link" href={cat.link}>
+                                  <a className="nav-link h-100" href={cat.link}>
                                     <img
-                                      src={catImg}
+                                       src={imagesUrl+catImg}
                                       className="img-fluid h-100"
                                       alt="cat img"
                                     />

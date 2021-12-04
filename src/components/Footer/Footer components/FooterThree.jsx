@@ -1,6 +1,8 @@
 import React from 'react'
 
 const FooterThree = () => {
+  const imagesUrl = "https://noon-ecommerce.herokuapp.com/images/"
+
     return (
         <>
             <footer class="last__footer py-0 py-sm-4 my-0 mb-md-4">
@@ -44,14 +46,14 @@ const FooterThree = () => {
               align-items-center
             "
             >
-              <img src="images/footer/cash-black.svg" class="me-1" alt="Cash" />
-              <img src="images/footer/visa-black.svg" class="me-1" alt="Visa" />
+              <img  src={imagesUrl+'cash-black.svg'} class="me-1" alt="Cash" />
+              <img  src={imagesUrl+'visa-black.svg'} class="me-1" alt="Visa" />
               <img
-                src="images/footer/amex-black-v2.svg"
+                s src={imagesUrl+'amex-black-v2.svg'}
                 class="me-1"
                 alt="amx"
               />
-              <img src="images/footer/mastercard-black.svg" alt="MasterCard" />
+              <img  src={imagesUrl+'mastercard-black.svg'} alt="MasterCard" />
             </div>
             <ul
               class="

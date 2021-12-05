@@ -1,4 +1,5 @@
 import React, {useContext} from 'react'
+import { Link } from 'react-router-dom';
 import { categoriesContext, subCatChangedContext, xContext, mouseOverContext, mouseOutContext, elemRef_show__categoriesContext } from '../Header';
 
     
@@ -32,9 +33,9 @@ const HeaderFloatingShowCategories = () => {
                             return (
                               <>
                                 <li className="nav-item text-start">
-                                  <a className="nav-link" href={cat.link}>
+                                  <Link className="nav-link" to={`/Home/search?category=${cat.mainCat}&subCat=${subCategory}`}>
                                     {subCategory}
-                                  </a>
+                                  </Link>
                                 </li>
                               </>
                             );
@@ -58,14 +59,14 @@ const HeaderFloatingShowCategories = () => {
                               return (
                                 <>
                                   <li className="nav-item">
-                                    <a className="nav-link" href={cat.link}>
+                                    <Link className="nav-link" to={`/Home/search?category=${cat.mainCat}&brand=${brandImg}`}>
                                       <img
                                         src={imagesUrl+brandImg} // works fine
                                         // src={imagesUrl+'2.jpg'}
                                         className="img-fluid"
                                         alt="brand img"
                                       />
-                                    </a>
+                                    </Link>
                                   </li>
                                 </>
                               );

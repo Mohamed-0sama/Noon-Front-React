@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Header from "./../components/Header/Header";
-import Footer from './../components/Footer/Footer';
+import Footer from "./../components/Footer/Footer";
 // import TestRouting from "./../components/TestRouting";
 // import FooterThree from "../components/Footer/Footer components/FooterThree";
 import { Outlet } from "react-router";
@@ -11,10 +11,17 @@ export const mySubCatContext = React.createContext();
 export const setMySubCatContext = React.createContext();
 export const myBrandContext = React.createContext();
 export const setMyBrandContext = React.createContext();
+export const mySearchContext = React.createContext();
+export const mySetSearchContext = React.createContext();
+export const myQueryContext = React.createContext();
+export const SetMyQueryContext = React.createContext();
+
 const Home = () => {
   const [myMainCat, setMyMainCat] = useState("");
   const [mySubCat, setMySubCat] = useState("");
-const [myBrand, setMyBrand] = useState("");
+  const [myBrand, setMyBrand] = useState("");
+  const [search, setSearch] = useState("");
+  const [myQuery, setMyQuery] = useState("");
   return (
     <div>
       <myMainCatContext.Provider value={myMainCat}>
@@ -23,7 +30,15 @@ const [myBrand, setMyBrand] = useState("");
             <setMySubCatContext.Provider value={setMySubCat}>
               <myBrandContext.Provider value={myBrand}>
                 <setMyBrandContext.Provider value={setMyBrand}>
-                  <Header />
+                  <mySearchContext.Provider value={search}>
+                    <mySetSearchContext.Provider value={setSearch}>
+                      <myQueryContext.Provider value={myQuery}>
+                        <SetMyQueryContext.Provider value={setMyQuery}>
+                          <Header />
+                        </SetMyQueryContext.Provider>
+                      </myQueryContext.Provider>
+                    </mySetSearchContext.Provider>
+                  </mySearchContext.Provider>
                 </setMyBrandContext.Provider>
               </myBrandContext.Provider>
             </setMySubCatContext.Provider>
@@ -31,12 +46,16 @@ const [myBrand, setMyBrand] = useState("");
         </setMyMainCatContext.Provider>
       </myMainCatContext.Provider>
 
-      {/* <TestRouting /> */}
+
 
       <myMainCatContext.Provider value={myMainCat}>
         <mySubCatContext.Provider value={mySubCat}>
           <myBrandContext.Provider value={myBrand}>
-            <Outlet />
+            <mySearchContext.Provider value={search}>
+              <myQueryContext.Provider value={myQuery}>
+                <Outlet />
+              </myQueryContext.Provider>
+            </mySearchContext.Provider>
           </myBrandContext.Provider>
         </mySubCatContext.Provider>
       </myMainCatContext.Provider>
@@ -54,7 +73,6 @@ const [myBrand, setMyBrand] = useState("");
           </mySubCatContext.Provider>
         </setMyMainCatContext.Provider>
       </myMainCatContext.Provider>
-
     </div>
   );
 };

@@ -1,0 +1,5 @@
+-npm i react
+-npm i bootsrtap
+-npm i font-awesome
+-npm i redux react-redux
+-npm i react-router-dom

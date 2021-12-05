@@ -10,6 +10,9 @@ import RoutingDiv from "./components/RoutingDiv";
 import Home from "./pages/Home";
 import { React } from "react";
 import { useLocation } from 'react-router-dom';
+import Products from './components/Products';
+import Navbar from './components/Navbar';
+import Home2 from './components/Home2';
 
 
 function App() {
@@ -23,11 +26,13 @@ console.log(query.get("category"));
                     <Route path="/Home" element={<Home />}>                     
                       <Route path="/Home/test" element={<RoutingDiv />} />
                       <Route path="/Home/test2" element={<TestRouting />} />
+                      <Route path="/Home/products" element={<Products />} />
+                      <Route path="/Home/navbar" element={<Navbar />} />
+                      <Route path="/Home/Home2" element={<Home2 />} />                     
                     </Route>
                     <Route path="/header" element={<Header />} />
                     <Route path="/footer" element={<Footer />} />
-                  </Routes>
-                
+                  </Routes>               
     </div>
   );
 }

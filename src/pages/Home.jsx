@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Header from "./../components/Header/Header";
-// import Footer from './../components/Footer/Footer';
-import TestRouting from "./../components/TestRouting";
-import FooterThree from "../components/Footer/Footer components/FooterThree";
+import Footer from './../components/Footer/Footer';
+// import TestRouting from "./../components/TestRouting";
+// import FooterThree from "../components/Footer/Footer components/FooterThree";
 import { Outlet } from "react-router";
 
 export const myMainCatContext = React.createContext();
@@ -31,7 +31,8 @@ const [myBrand, setMyBrand] = useState("");
         </setMyMainCatContext.Provider>
       </myMainCatContext.Provider>
 
-      <TestRouting />
+      {/* <TestRouting /> */}
+
       <myMainCatContext.Provider value={myMainCat}>
         <mySubCatContext.Provider value={mySubCat}>
           <myBrandContext.Provider value={myBrand}>
@@ -39,7 +40,21 @@ const [myBrand, setMyBrand] = useState("");
           </myBrandContext.Provider>
         </mySubCatContext.Provider>
       </myMainCatContext.Provider>
-      <FooterThree />
+
+      <myMainCatContext.Provider value={myMainCat}>
+        <setMyMainCatContext.Provider value={setMyMainCat}>
+          <mySubCatContext.Provider value={mySubCat}>
+            <setMySubCatContext.Provider value={setMySubCat}>
+              <myBrandContext.Provider value={myBrand}>
+                <setMyBrandContext.Provider value={setMyBrand}>
+                  <Footer />
+                </setMyBrandContext.Provider>
+              </myBrandContext.Provider>
+            </setMySubCatContext.Provider>
+          </mySubCatContext.Provider>
+        </setMyMainCatContext.Provider>
+      </myMainCatContext.Provider>
+
     </div>
   );
 };

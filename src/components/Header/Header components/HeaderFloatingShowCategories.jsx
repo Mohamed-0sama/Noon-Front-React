@@ -28,7 +28,7 @@ const HeaderFloatingShowCategories = () => {
                       <>
                         {cat.id === x &&
                           cat.subCat.map((subCategory) => {
-                            console.log(subCategory);
+                            // console.log(subCategory);
                             return (
                               <>
                                 <li className="nav-item text-start">
@@ -54,7 +54,7 @@ const HeaderFloatingShowCategories = () => {
                         <>
                           {cat.id === x &&
                             cat.brandsImg.map((brandImg) => {
-                              console.log(brandImg);
+                              // console.log(brandImg);
                               return (
                                 <>
                                   <li className="nav-item">
@@ -87,7 +87,7 @@ const HeaderFloatingShowCategories = () => {
                       <>
                         {cat.id === x &&
                           cat.catImg.map((catImg) => {
-                            console.log(catImg);
+                            // console.log(catImg);
                             return (
                               <>
                                 {/* <li

@@ -1,12 +1,22 @@
 // floating left categories which contain the div of All CATEGORIES button when mouseOver
 // 1- the div of All CATEGORIES button => all categories + top brands + most popular
 
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
+import { Link } from 'react-router-dom';
 import { categoriesContext, subCatChangedContext, xContext } from '../Header';
+import { myBrandContext, myMainCatContext, setMyBrandContext, setMyMainCatContext, setMySubCatContext, mySubCatContext }from './../../../pages/Home';
+// import { mySubCatContext } from './../../../pages/Home';
 const HeaderFloatingLeft = () => {
+  
     const categories = useContext(categoriesContext)
     const subCatChanged = useContext(subCatChangedContext)
     const x = useContext(xContext)
+    const myMainCat = useContext(myMainCatContext)
+    const setMyMainCat = useContext(setMyMainCatContext)
+    const mySubCat = useContext(mySubCatContext)
+    const setMySubCat = useContext(setMySubCatContext)
+    const myBrand = useContext(myBrandContext)
+    const setMyBrand = useContext(setMyBrandContext)
     return (
         <>
            <div className="dropdown d-none d-lg-block">
@@ -26,9 +36,10 @@ const HeaderFloatingLeft = () => {
                       className="nav-item text-start"
                       onMouseOver={() => subCatChanged(cat.id)}
                     >
-                      <a className="nav-link" href={cat.link}>
+                      <Link className="nav-link" to="/Home/test" onClick={() => setMyMainCat(cat.mainCat)}>
                         {cat.mainCat}
-                      </a>
+                        {console.log(myMainCat)}
+                      </Link>
                     </li>
                   </>
                 );
@@ -56,9 +67,9 @@ const HeaderFloatingLeft = () => {
                                       className="nav-item"
                                     //   ref={elemRef_subCat}
                                     >
-                                      <a className="nav-link" href={cat.link}>
+                                      <Link className="nav-link" to="/Home/test" onClick={() => setMySubCat(subCategory)}>
                                         {subCategory}
-                                      </a>
+                                      </Link>
                                     </li>
                                   </>
                                 );
@@ -83,9 +94,9 @@ const HeaderFloatingLeft = () => {
                                       className="nav-item"
                                     //   ref={elemRef_subCat}
                                     >
-                                      <a className="nav-link" href={cat.link}>
+                                      <Link className="nav-link" to="/Home/test" onClick={() => setMyBrand(brand)}>
                                         {brand}
-                                      </a>
+                                      </Link>
                                     </li>
                                   </>
                                 );

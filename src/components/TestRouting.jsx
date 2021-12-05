@@ -1,13 +1,10 @@
-import React from 'react'
-import { Outlet } from 'react-router'
+import React from "react";
 
 const TestRouting = () => {
-    return (
-        <div>
-            <h1>Test Routing</h1>
-            
-        </div>
-    )
-}
-
-export default TestRouting
+  return (
+    <div>
+      <h1>Welcome</h1>
+    </div>
+  );
+};
+export default TestRouting;

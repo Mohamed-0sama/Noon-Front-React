@@ -85,7 +85,7 @@ const Header = () => {
   .then(function (response) {
     // handle success
     setCategories(response.data)
-    console.log(response.data);
+    // console.log(response.data);
   })
   .catch(function (error) {
     // handle error

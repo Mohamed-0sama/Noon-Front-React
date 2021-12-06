@@ -57,8 +57,8 @@ const Header = () => {
     elemRef_show__categories.current.style.display = "flex";
   };
   return (
-    <div>
-      <header>
+    <div className="BigHeader">
+      <header className="mainHeader">
         <HeaderOne />
 
         {/* <i className="bi bi-filter-square-fill d-block d-md-none aside__controller"></i> */}

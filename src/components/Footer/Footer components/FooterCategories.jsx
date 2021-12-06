@@ -17,11 +17,11 @@ const FooterCategories = () => {
                 <Link to={`/Home/category/${category.mainCat}`}>
                 <h6 class="mt-3">{category.mainCat}</h6>
                 </Link>
-                <ul class="nav flex-column" style={{ fontSize: "13px" }}>
+                <ul class="nav flex-column text-start align-items-start" style={{ fontSize: "13px" }}>
                   {category.subCat.map((subCategory)=>{
                     return(
                       <>
-                      <li class="nav-item mb-2">
+                      <li class="nav-item mb-2 text-start">
                   <Link to={`/Home/search?category=${category.mainCat}&subCat=${subCategory}`} class="nav-link p-0 text-muted">
                     {subCategory}
                   </Link>

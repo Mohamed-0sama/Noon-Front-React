@@ -28,7 +28,7 @@ const HeaderFloatingLeft = () => {
     }
     return (
         <>
-           <div className="dropdown d-none d-lg-block">
+           <div className="dropdown dropdown_ALLCATEGORIES d-none d-lg-block">
             <a
               className="btn dropdown-toggle a_cat"
               id="dropdownMenuLink"

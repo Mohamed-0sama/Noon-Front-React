@@ -10,7 +10,7 @@ import {
 } from "./../pages/Home";
 import axios from "axios";
 const RoutingDiv = () => {
-  const query = new URLSearchParams(useLocation().search) // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+  const query = new URLSearchParams(useLocation().search); // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   console.log(query);
   // const myMainCat = useContext(myMainCatContext);
   // const mySubCat = useContext(mySubCatContext);
@@ -20,22 +20,30 @@ const RoutingDiv = () => {
   console.log(myQuery);
   console.log(myBrand);
   const [myData, setMyData] = useState([]);
-  useEffect(() => {
-    axios
-      .get(`http://localhost:5000/api/products?${myQuery}=${myBrand}`)
-      .then((response) => {
-        setMyData(response.data);
-        console.log(response.data);
-      });
-    return () => {
-      // cleanup
-    };
-  }, [myBrand, myQuery]);
+  let type = "";
+  if (myQuery === "brand") {
+    type = "brand";
+  } else if (myQuery === "subCat") {
+    type = "subCat";
+  } else {
+    type = "category";
+  }
+  // useEffect(() => {
+  //   axios
+  //     .get(`http://localhost:5000/api/products?${myQuery}=${type}`)
+  //     .then((response) => {
+  //       setMyData(response.data);
+  //       console.log(response.data);
+  //     });
+  //   return () => {
+  //     // cleanup
+  //   };
+  // }, [type, myQuery]);
   return (
     <div>
       <h1>Welcome</h1>
 
-      {myData.map((data) => {
+      {/* {myData.map((data) => {
         return (
           <>
             <Card
@@ -49,7 +57,7 @@ const RoutingDiv = () => {
             </Card>
           </>
         );
-      })}
+      })} */}
     </div>
   );
 };

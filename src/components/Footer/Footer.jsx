@@ -12,7 +12,7 @@ export const categoriesContext = React.createContext();
 const Footer = () => {
   const [categories, setCategories] = useState(() =>[])
   useEffect(() => {
-    axios.get("http://localhost:3000/categories") // why only accepets json server
+    axios.get("http://localhost:5000/api/categories") // why only accepets json server
   .then(function (response) {
     // handle success
     setCategories(response.data.slice(0, 6))

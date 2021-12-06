@@ -1,22 +1,23 @@
 // import React from 'react'
-// import "./HeaderOne.css"
+import "./userHeader.css";
 import React, { useState } from "react";
 // import { Input, AutoComplete } from 'antd';
 import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import {useNavigate} from "react-router-dom";
-import { mySearchContext, mySetSearchContext } from './../../../pages/Home';
-import { useContext } from 'react';
-import { Navbar } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { mySearchContext, mySetSearchContext } from "./../../../pages/Home";
+import { useContext } from "react";
+import { HomeOutlined } from "@ant-design/icons";
 
-const HeaderOne = () => {
-  let navigate = useNavigate()
+
+const UserHeader = () => {
+  let navigate = useNavigate();
   // const [search, setsearch] = useState("");
-  const search = useContext(mySearchContext)
-  const setSearch = useContext(mySetSearchContext)
+  const search = useContext(mySearchContext);
+  const setSearch = useContext(mySetSearchContext);
   const [searchOption, setSearchOption] = useState([]);
- 
+
   const imagesUrl = "https://noon-ecommerce.herokuapp.com/images/";
   useEffect(() => {
     axios
@@ -36,23 +37,20 @@ const HeaderOne = () => {
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       console.log(event.target.value);
-      navigate(`/Home/category/${event.target.value}`)
-    // `/Home/category/${cat.mainCat}`
+      navigate(`/Home/category/${event.target.value}`);
+      // `/Home/category/${cat.mainCat}`
     }
   };
   return (
     <>
-      {/* <nav
+      <nav
         className="
       navbar navbar-expand-sm navbar-light
       position-sm-static
       p-1
       first__navbar
     "
-      > */}
-      <Navbar collapseOnSelect expand="sm" className="position-sm-static
-      p-1
-      first__navbar" >
+      >
         <div className="container-fluid">
           <a
             className="navbar-brand d-block d-sm-none"
@@ -64,22 +62,18 @@ const HeaderOne = () => {
               alt="noon"
             />
           </a>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          {/* <button
+          <button
             className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent"
-            // aria-controls="navbarSupportedContent"
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon"></span>
-          </button> */}
-          {/* <div className="collapse navbar-collapse" id="responsive-navbar-nav"> */}
-          {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" /> */}
-          <Navbar.Collapse id="responsive-navbar-nav">
+          </button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
             {/* id="navbarSupportedContent" */}
             <ul className="navbar-nav me-auto">
               <li className="nav-item">
@@ -90,31 +84,6 @@ const HeaderOne = () => {
                 >
                   <img src={imagesUrl + "noon-black-en.svg"} alt="noon" />
                   {/* <img src="images/header/noon-black-en.svg" alt="noon" /> */}
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="nav-link d-flex"
-                  href="https://ant.design/components/dropdown"
-                >
-                  <div className="egyptFlag mx-2 d-flex d-none d-md-block">
-                    <img
-                      src={imagesUrl + "eg.svg"}
-                      // src="images/header/eg.svg"
-                      alt=""
-                    />
-                  </div>
-                  <div>
-                    <div className="Deliver">
-                      <span>Deliver to</span>
-                      <img
-                        src={imagesUrl + "dropdownArrow.svg"}
-                        // src="images/header/dropdownArrow.svg"
-                        alt="dropdownArrow"
-                      />
-                    </div>
-                    <span>Cairo</span>
-                  </div>
                 </a>
               </li>
 
@@ -154,43 +123,70 @@ const HeaderOne = () => {
                 {/* <Complete /> */}
               </li>
               <li className="nav-item language">
-                <a
-                  className="nav-link"
+                <a              
+                  className="nav-link mx-2"
                   href="https://ant.design/components/dropdown"
                 >
                   <span>العربية</span>
                 </a>
               </li>
               <li className="nav-item sign-in">
-                <Link className="nav-link" to="/Home/TestRouting">
-                  <span>Sign In</span>
-                  <img
-                    src={imagesUrl + "user_thin.svg"}
-                    // src="images/header/user_thin.svg"
-                    alt="user"
-                    style={{ width: "17px" }}
-                  />
+                <Link className="nav-link" to="/Home">
+                  {/* <span>Sign In</span> */}
+                  <svg
+                    className="mx-2"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M5.44812 12.3353V21H11.9573H18.4665V12.3353L11.9203 6.12511L5.44812 12.3353Z"
+                      stroke="#404554"
+                      stroke-width="0.856739"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M11.9203 6.12511L4.92597 12.8779C4.47664 13.3117 3.7607 13.2991 3.32689 12.8498C2.89307 12.4004 2.90565 11.6845 3.35499 11.2507L11.9008 3L20.6522 11.241C21.1069 11.6692 21.1284 12.3849 20.7002 12.8396C20.272 13.2943 19.5563 13.3158 19.1016 12.8876L11.9203 6.12511Z"
+                      stroke="#404554"
+                      stroke-width="0.856739"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M9.76611 20.7774L9.76611 16.9336C9.76611 15.7439 10.7306 14.7794 11.9203 14.7794V14.7794C13.11 14.7794 14.0745 15.7439 14.0745 16.9336V20.7774"
+                      stroke="#404554"
+                      stroke-width="0.856739"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M12.8551 12.6005H10.9003"
+                      stroke="#404554"
+                      stroke-width="0.856739"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/Home/test">
-                  <span>Cart</span>
+                <Link className="nav-link" to="/User/cart">
+                  {/* <span>Cart</span> */}
                   <img
+                  className="mx-2"
                     src={imagesUrl + "cart.svg"}
-                    //  src="images/header/cart.svg"
+                    //  src="./images/categories/Home/Home-1.png"
                     alt="cart"
                   />
                 </Link>
               </li>
             </ul>
-            </Navbar.Collapse>
           </div>
-          
-        {/* </div> */}
-      {/* </nav> */}
-      </Navbar>
+        </div>
+      </nav>
     </>
   );
 };
 
-export default HeaderOne;
+export default UserHeader;

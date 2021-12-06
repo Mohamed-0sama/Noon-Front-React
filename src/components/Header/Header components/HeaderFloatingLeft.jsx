@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { categoriesContext, subCatChangedContext, xContext } from '../Header';
 import { myBrandContext, myMainCatContext, setMyBrandContext, setMyMainCatContext, setMySubCatContext, mySubCatContext }from './../../../pages/Home';
 // import { mySubCatContext } from './../../../pages/Home';
+import { myQueryContext, SetMyQueryContext } from './../../../pages/Home';
 const HeaderFloatingLeft = () => {
   
     const categories = useContext(categoriesContext)
@@ -17,9 +18,17 @@ const HeaderFloatingLeft = () => {
     const setMySubCat = useContext(setMySubCatContext)
     const myBrand = useContext(myBrandContext)
     const setMyBrand = useContext(setMyBrandContext)
+    const myQuery = useContext(myQueryContext)
+    const setMyQuery = useContext(SetMyQueryContext)
+
+    // const [myQuery, setMyQuery] = useState("")
+    const query = (id)=>{
+       setMyQuery(id)
+        console.log(myQuery)
+    }
     return (
         <>
-           <div className="dropdown d-none d-lg-block">
+           <div className="dropdown dropdown_ALLCATEGORIES d-none d-lg-block">
             <a
               className="btn dropdown-toggle a_cat"
               id="dropdownMenuLink"
@@ -36,7 +45,9 @@ const HeaderFloatingLeft = () => {
                       className="nav-item text-start"
                       onMouseOver={() => subCatChanged(cat.id)}
                     >
-                      <Link className="nav-link" to="/Home/test" onClick={() => setMyMainCat(cat.mainCat)}>
+                      <Link className="nav-link" to={`/Home/category/${cat.mainCat}`} onClick={() => {setMyMainCat(cat.mainCat);
+                      query("category")
+                      }}>
                         {cat.mainCat}
                         {console.log(myMainCat)}
                       </Link>
@@ -67,7 +78,9 @@ const HeaderFloatingLeft = () => {
                                       className="nav-item"
                                     //   ref={elemRef_subCat}
                                     >
-                                      <Link className="nav-link" to="/Home/test" onClick={() => setMySubCat(subCategory)}>
+                                      <Link className="nav-link" to={`/Home/search?category=${cat.mainCat}&subCat=${subCategory}`} onClick={() => {setMySubCat(subCategory);
+                                      query("subCat")
+                                      }}>
                                         {subCategory}
                                       </Link>
                                     </li>
@@ -88,13 +101,16 @@ const HeaderFloatingLeft = () => {
                           <>
                             {cat.id === x &&
                               cat.brands.map((brand) => {
+                                console.log(cat)
                                 return (
                                   <>
                                     <li
                                       className="nav-item"
                                     //   ref={elemRef_subCat}
                                     >
-                                      <Link className="nav-link" to="/Home/test" onClick={() => setMyBrand(brand)}>
+                                      <Link className="nav-link" to={`/Home/search?category=${cat.mainCat}&brand=${brand}`} onClick={() => {setMyBrand(brand);
+                                      query("brands")
+                                      }}>
                                         {brand}
                                       </Link>
                                     </li>

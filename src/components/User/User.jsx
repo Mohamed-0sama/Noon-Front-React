@@ -36,12 +36,13 @@ const User = () => {
         <Sider className="sider" trigger={null} collapsible collapsed={collapsed}>
           <div className="logo" />
           <Menu className="sider" theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
-            <Menu.Item key="1" icon={<HomeOutlined />} onClick={()=>componentName("Address")}>
-              <Link to="/User/address">Address</Link>
-            </Menu.Item>
-            <Menu.Item key="2" icon={<ShopOutlined />} onClick={()=>componentName("Order")}>
+          <Menu.Item key="1" icon={<ShopOutlined />} onClick={()=>componentName("Order")}>
               <Link to="/User/order">Order</Link>
             </Menu.Item>
+            <Menu.Item key="2" icon={<HomeOutlined />} onClick={()=>componentName("Address")}>
+              <Link to="/User/address">Address</Link>
+            </Menu.Item>
+            
             <Menu.Item key="3" icon={<UserOutlined />} onClick={()=>componentName("Profile")}>
               <Link to="/User/profile">Profile</Link>
             </Menu.Item>

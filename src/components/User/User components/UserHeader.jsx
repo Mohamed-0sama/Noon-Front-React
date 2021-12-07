@@ -1,5 +1,5 @@
 // import React from 'react'
-import "./userHeader.css";
+import "./userHeader.scss";
 import React, { useState } from "react";
 // import { Input, AutoComplete } from 'antd';
 import { useEffect } from "react";
@@ -42,7 +42,7 @@ const UserHeader = () => {
     }
   };
   return (
-    <>
+    <div className="User-Header">
       <nav
         className="
       navbar navbar-expand-sm navbar-light
@@ -185,7 +185,7 @@ const UserHeader = () => {
           </div>
         </div>
       </nav>
-    </>
+    </div>
   );
 };
 

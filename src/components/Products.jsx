@@ -5,11 +5,13 @@ function Products() {
     const [data, setData] = useState([]);
     const [filter, setFilter] = useState(data)
     const [loading, setLoading] = useState(false)
-    let componentMounted = true;
+    // let componentMounted = true;
+    const [componentMounted,setComp]=useState(true)
     useEffect(() => {
         const getProducts = async () => {
             setLoading(true);
-            const response = await fetch("http://fakestoreapi.com/products");
+            const response = await fetch("https://noon-ecommerce.herokuapp.com/api/products");
+            console.log()
             if (componentMounted) {
                 setData(await response.clone().json());
                 setFilter(await response.json());
@@ -17,7 +19,8 @@ function Products() {
                 console.log(filter)
             }
             return () => {
-                componentMounted = false;
+                // componentMounted = false;
+                setComp(false);
             }
         }
         getProducts();
@@ -73,7 +76,8 @@ function Products() {
                         alt="jewelery" />
                 </div>
 
-                    <Ads  className="p-1"  />
+                    <Ads  className="p-1" AdLink="https://k.nooncdn.com/cms/pages/20211107/a58fba95ad31a79fdd281a67d483dcb0/en_dk-toggle-01.png  "  />
+
                     <br/>
                     <br/>
                 {filter.map((product) => {
@@ -81,7 +85,7 @@ function Products() {
                         <>
                             <div className="col-md-3 mb-4">
                                 <div class="card h-100 text-center p-4" key={product.id} >
-                                    <img src={product.image} class="card-img-top" alt={product.title} height="250px" />
+                                    <img src={`https://noon-ecommerce.herokuapp.com/images/${product.imageSrc}`} class="card-img-top" alt={product.title} height="250px" />
                                     <div class="card-body">
                                         <h5 class="card-title mb-0">{product.title.substring(0, 12)}...</h5>
                                         <p class="card-text lead ">${product.price}</p>

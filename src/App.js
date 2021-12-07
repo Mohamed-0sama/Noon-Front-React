@@ -4,14 +4,21 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Products from './components/Products';
 import { Route,Routes } from 'react-router-dom';
+import Categodyslider from './components/Categoryslider'
+
 function App() {
   return (
     <>
       <Navbar />
       <Routes>
         <Route exact path="/" element={<Home/>} />
+        <Route exact path ="/slider" element={<Categodyslider/>} />
         <Route exact path="/products" element={<Products/>} />
       </Routes>
+
+    
+
+
     </>
   );
 }

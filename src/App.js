@@ -2,7 +2,7 @@
 import "./App.css";
 // import Header from "./components/Header/Header";
 // import Footer from "./components/Footer/Footer";
-import { Route, Routes } from "react-router";
+import { Navigate, Route, Routes } from "react-router";
 // import Footer from './components/Footer/Footer';
 
 // import FooterThree from "./components/Footer/Footer components/FooterThree";
@@ -25,19 +25,23 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" exact element={<Home />} />
-        <Route path="/Home" element={<Home />}>
-          <Route path="/Home/products" element={<Products />} />
-          <Route path="/Home/category/:selectedCat" element={<RoutingDiv />} />
-          <Route path="/Home/search" element={<RoutingDiv />} />
-          <Route path="/Home/category/:selectedCat" element={<RoutingDiv />} />
-          <Route path="/Home/navbar" element={<Navbar />} />
-          <Route path="/Home/Home2" element={<Home2 />} />
+        {/* <Route path="/" exact element={<Home />} /> */}
+        <Route path="/Home" element={<Navigate replace to="/" />} />
+        <Route path="/" element={<Home />}>
+          <Route index element={<Products />} />
+          {/* <Route path="/Home/products" element={<Products />} /> */}
+          <Route path="/category/:selectedCat" element={<RoutingDiv />} />
+          <Route path="/search" element={<RoutingDiv />} />
+          <Route path="/category/:selectedCat" element={<RoutingDiv />} />
+          <Route path="/Cart" element={<Navbar />} />
+          <Route path="/Home2" element={<Home2 />} />
         </Route>
-        <Route path="/User" element={<User />}>
+        <Route path="/User" element={<Navigate replace to="/User/order" />} />
+        <Route path="User" element={<User />}>
+          {/* <Route index element={<Order />} /> */}
+          <Route path="/User/order" element={<Order />} />
           <Route path="/User/address" element={<Address />} />
           <Route path="/User/profile" element={<Profile />} />
-          <Route path="/User/order" element={<Order />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -54,15 +54,15 @@ const Footer = () => {
     <div>
       <FooterOne />
 
-      <footer class="py-0 py-md-4">
-        <div class="container-fluid">
-          {/* <!-- <footer class="py-5"> --> */}
+      <footer className="py-0 py-md-4">
+        <div className="container-fluid">
+          {/* <!-- <footer className="py-5"> --> */}
           <categoriesContext.Provider value={categories}>
         <FooterCategories /> 
         </categoriesContext.Provider>
-          <div class="row mt-3">
+          <div className="row mt-3">
             <div
-              class="
+              className="
               col-md-6
               d-flex
               flex-column
@@ -75,7 +75,7 @@ const Footer = () => {
               <FooterApps />
             </div>
             <div
-              class="
+              className="
               col-md-6
               d-flex
               flex-column

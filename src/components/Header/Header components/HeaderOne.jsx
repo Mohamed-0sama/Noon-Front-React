@@ -1,22 +1,47 @@
 // import React from 'react'
-// import "./HeaderOne.css"
+import "../header.scss"
 import React, { useState } from "react";
 // import { Input, AutoComplete } from 'antd';
 import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import {useNavigate} from "react-router-dom";
-import { mySearchContext, mySetSearchContext } from './../../../pages/Home';
-import { useContext } from 'react';
-import { Navbar } from "react-bootstrap";
-
+import { useNavigate } from "react-router-dom";
+import { mySearchContext, mySetSearchContext } from "./../../../pages/Home";
+import { useContext } from "react";
+import { DropdownButton, Navbar } from "react-bootstrap";
+// import { Dropdown } from "react-bootstrap";
+import { Button } from "antd";
+import { Menu } from "antd";
+import { Dropdown } from "antd";
+import { CaretDownOutlined, DownOutlined, HomeOutlined, ShopOutlined } from "@ant-design/icons";
+import { UserOutlined } from '@ant-design/icons';
+//
+const menu = (
+  <Menu style={{width: "150px", 
+  position: "relative", top: "10px", right: "50px"
+  }}>
+    <Menu.Item key="0" className="">
+      <Link to="/User/order" className="d-flex align-items-center"><ShopOutlined className="me-2"/> order </Link>
+    </Menu.Item>
+    <Menu.Item key="1">
+      <Link to="/User/address" className="d-flex align-items-center"><HomeOutlined className="me-2"/>Address</Link>
+    </Menu.Item>
+    <Menu.Item key="2">
+      <Link to="/User/profile" className="d-flex align-items-center"><UserOutlined className="me-2"/>profile</Link>
+    </Menu.Item>
+    <Menu.Divider className="text-center"/>
+    <Menu.Item key="4" className="text-center">sign out</Menu.Item>
+  </Menu>
+);
 const HeaderOne = () => {
-  let navigate = useNavigate()
+  let isLoggedIn = true;
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  let navigate = useNavigate();
   // const [search, setsearch] = useState("");
-  const search = useContext(mySearchContext)
-  const setSearch = useContext(mySetSearchContext)
+  const search = useContext(mySearchContext);
+  const setSearch = useContext(mySetSearchContext);
   const [searchOption, setSearchOption] = useState([]);
- 
+
   const imagesUrl = "https://noon-ecommerce.herokuapp.com/images/";
   useEffect(() => {
     axios
@@ -32,27 +57,23 @@ const HeaderOne = () => {
       });
     // console.log(posts);
   }, [search]);
-  const handleSearch = () => {};
+  // const handleSearch = () => {};
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       console.log(event.target.value);
-      navigate(`/Home/category/${event.target.value}`)
-    // `/Home/category/${cat.mainCat}`
+      navigate(`/Home/category/${event.target.value}`);
+      // `/Home/category/${cat.mainCat}`
     }
   };
   return (
     <>
-      {/* <nav
-        className="
-      navbar navbar-expand-sm navbar-light
-      position-sm-static
+      <Navbar
+        collapseOnSelect
+        expand="sm"
+        className="position-sm-static
       p-1
-      first__navbar
-    "
-      > */}
-      <Navbar collapseOnSelect expand="sm" className="position-sm-static
-      p-1
-      first__navbar" >
+      first__navbar"
+      >
         <div className="container-fluid">
           <a
             className="navbar-brand d-block d-sm-none"
@@ -65,20 +86,7 @@ const HeaderOne = () => {
             />
           </a>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          {/* <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            // aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button> */}
-          {/* <div className="collapse navbar-collapse" id="responsive-navbar-nav"> */}
-          {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" /> */}
+
           <Navbar.Collapse id="responsive-navbar-nav">
             {/* id="navbarSupportedContent" */}
             <ul className="navbar-nav me-auto">
@@ -119,15 +127,8 @@ const HeaderOne = () => {
               </li>
 
               <li className="header__li__search">
-                {/* <input
-                    className="header__search me-2"
-                    type="search"
-                    aria-label="Search"
-                    placeholder="What are you looking for?"
-                  /> */}
-                {/* <label for="exampleDataList" class="form-label">Datalist example</label> */}
                 <input
-                  class="form-control"
+                  className="form-control"
                   list="datalistOptions"
                   onChange={(event) => {
                     setSearch(event.target.value);
@@ -162,7 +163,12 @@ const HeaderOne = () => {
                 </a>
               </li>
               <li className="nav-item sign-in">
-                <Link className="nav-link" to="/Home/TestRouting">
+                <Link
+                  className={
+                    !isLoggedIn ? "d-block nav-link" : "d-none nav-link"
+                  }
+                  to="/Login"
+                >
                   <span>Sign In</span>
                   <img
                     src={imagesUrl + "user_thin.svg"}
@@ -171,9 +177,40 @@ const HeaderOne = () => {
                     style={{ width: "17px" }}
                   />
                 </Link>
+
+                <Dropdown overlay={menu} trigger={["click"]}>
+                  <Link
+                    to="/User"
+                    className={
+                      "ant-dropdown-link mx-2 d-flex align-items-center " + (isLoggedIn ? "d-block" : "d-none")
+                    }
+                    onClick={(e) => e.preventDefault()}
+                  >
+                    My Account <CaretDownOutlined className="ms-2"/>
+                  </Link>
+                </Dropdown>
+                {/* <DropdownButton
+                  className={isLoggedIn ? "d-block" : "d-none"}
+                  align="end"
+                  title="My Account"
+                  id="dropdown-menu-align-end"
+                >
+                  <Dropdown.Item eventKey="1">
+                    <a href="#d"><Link to="/User/order">order</Link></a>
+                    </Dropdown.Item>
+                  
+                  <Dropdown.Item eventKey="2">
+                    <Link to="/User/address">address</Link>
+                  </Dropdown.Item>
+                  <Dropdown.Item eventKey="3">
+                    <Link to="/User/profile">profile</Link>
+                  </Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Item eventKey="4">Sign out</Dropdown.Item>
+                </DropdownButton> */}
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/Home/test">
+                <Link className="nav-link" to="/Cart">
                   <span>Cart</span>
                   <img
                     src={imagesUrl + "cart.svg"}
@@ -183,11 +220,8 @@ const HeaderOne = () => {
                 </Link>
               </li>
             </ul>
-            </Navbar.Collapse>
-          </div>
-          
-        {/* </div> */}
-      {/* </nav> */}
+          </Navbar.Collapse>
+        </div>
       </Navbar>
     </>
   );

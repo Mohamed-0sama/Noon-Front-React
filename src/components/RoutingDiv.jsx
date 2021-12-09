@@ -4,20 +4,22 @@ import { useLocation } from "react-router-dom";
 import { Card } from "antd";
 import {
   myBrandContext,
-  // myMainCatContext,
-  // mySubCatContext,
+  myMainCatContext,
+  mySubCatContext,
   myQueryContext,
 } from "./../pages/Home";
 import axios from "axios";
 const RoutingDiv = () => {
   const query = new URLSearchParams(useLocation().search); // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   console.log(query);
-  // const myMainCat = useContext(myMainCatContext);
-  // const mySubCat = useContext(mySubCatContext);
+  const myMainCat = useContext(myMainCatContext);
+  const mySubCat = useContext(mySubCatContext);
   const myBrand = useContext(myBrandContext);
   // const myQuery = useContext(myQueryContext)
   const myQuery = useContext(myQueryContext);
   console.log(myQuery);
+  console.log(myMainCat);
+  console.log(mySubCat);
   console.log(myBrand);
   const [myData, setMyData] = useState([]);
   let type = "";

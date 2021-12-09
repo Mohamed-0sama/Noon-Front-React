@@ -3,13 +3,13 @@ import React from 'react'
 const FooterOne = () => {
     return (
         <>
-            <footer class="first__footer py-0  my-0 ">
+            <footer className="first__footer py-0  my-0 ">
         <div
-          class="container-fluid"
+          className="container-fluid"
           style={{ fontSize: "13px", background: "#F7F7FA" }}
         >
           <div
-            class="
+            className="
         d-flex
         flex-wrap
         justify-content-center justify-content-lg-between
@@ -17,9 +17,9 @@ const FooterOne = () => {
       "
             style={{ padding: "12px 45px" }}
           >
-            <div class="paras my-3">
+            <div className="paras my-3">
               <p
-                class="
+                className="
 
           mb-0
           d-flex
@@ -31,7 +31,7 @@ const FooterOne = () => {
                 We're Always Here To Help
               </p>
               <p
-                class="d-flex
+                className="d-flex
       justify-content-center justify-content-lg-start
       align-items-center
       text-center"
@@ -40,9 +40,10 @@ const FooterOne = () => {
               </p>
             </div>
 
-            <div class="d-flex flex-wrap justify-content-center">
-              <div class="d-flex align-items-center first__footer__help">
+            <div className="d-flex flex-wrap justify-content-center">
+              <div className="d-flex align-items-center first__footer__help">
                 <div>
+                  <a href="https://help.noon.com/hc/en-us">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"
@@ -62,13 +63,14 @@ const FooterOne = () => {
                       fill="#404554"
                     ></path>
                   </svg>{" "}
+                  </a>
                 </div>
-                <div class="d-flex flex-column">
+                <div className="d-flex flex-column" href="">
                   <span>HELP CENTER</span>
-                  <a href="mailto:help.noon.com">help.noon.com</a>
+                  <a href="https://help.noon.com/hc/en-us">help.noon.com</a>
                 </div>
               </div>
-              <div class="d-flex align-items-center first__footer__help second">
+              <div className="d-flex align-items-center first__footer__help second">
                 <div>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -81,25 +83,25 @@ const FooterOne = () => {
                     <path
                       d="M5.625 6H18.625C19.5188 6 20.25 6.73125 20.25 7.625V17.375C20.25 18.2688 19.5188 19 18.625 19H5.625C4.73125 19 4 18.2688 4 17.375V7.625C4 6.73125 4.73125 6 5.625 6Z"
                       stroke="#404553"
-                      stroke-width="1.5"
+                      strokeWidth="1.5"
                       stroke-linecap="round"
                       stroke-linejoin="round"
                     ></path>
                     <path
                       d="M20.25 7.62501L12.125 13.3125L4 7.62501"
                       stroke="#404553"
-                      stroke-width="1.5"
+                      strokeWidth="1.5"
                       stroke-linecap="round"
                       stroke-linejoin="round"
                     ></path>
                   </svg>{" "}
                 </div>
-                <div class="d-flex flex-column">
+                <div className="d-flex flex-column">
                   <span>EMAIL SUPPORT</span>
                   <a href="mailto:egypt@noon.com">egypt@noon.com</a>
                 </div>
               </div>
-              <div class="d-flex align-items-center first__footer__help">
+              <div className="d-flex align-items-center first__footer__help">
                 <div>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -112,11 +114,11 @@ const FooterOne = () => {
                     <path
                       d="M18.1912 14.2183C17.5384 13.5738 16.7234 13.5738 16.0748 14.2183C15.58 14.7089 15.0852 15.1996 14.5987 15.6985C14.4656 15.8358 14.3534 15.8649 14.1912 15.7734C13.871 15.5988 13.5301 15.4574 13.2224 15.2661C11.7879 14.3638 10.5862 13.2037 9.52176 11.8981C8.99369 11.2495 8.52384 10.5551 8.19535 9.77339C8.12883 9.61538 8.1413 9.51143 8.2702 9.38253C8.765 8.90436 9.24733 8.41372 9.73382 7.92308C10.4116 7.24116 10.4116 6.44283 9.72966 5.75675C9.34296 5.3659 8.95627 4.98337 8.56957 4.59251C8.17041 4.19335 7.7754 3.79002 7.37207 3.39501C6.71926 2.75883 5.90429 2.75883 5.25565 3.39917C4.75668 3.88981 4.27851 4.39293 3.77124 4.87526C3.30138 5.32016 3.06438 5.86486 3.01448 6.50104C2.93548 7.53638 3.18912 8.51351 3.54671 9.46569C4.27851 11.4366 5.39286 13.1871 6.74421 14.7921C8.56957 16.9626 10.7484 18.6798 13.2972 19.9189C14.4448 20.4761 15.634 20.9044 16.9272 20.975C17.817 21.0249 18.5904 20.8004 19.2099 20.106C19.634 19.632 20.1122 19.1996 20.5613 18.7464C21.2265 18.0728 21.2307 17.2578 20.5696 16.5925C19.7796 15.7983 18.9854 15.0083 18.1912 14.2183Z"
                       stroke="#404553"
-                      stroke-width="1.5"
+                      strokeWidth="1.5"
                     ></path>
                   </svg>
                 </div>
-                <div class="d-flex flex-column">
+                <div className="d-flex flex-column">
                   <span>PHONE SUPPORT</span>
                   <a href="#home">16358</a>
                 </div>

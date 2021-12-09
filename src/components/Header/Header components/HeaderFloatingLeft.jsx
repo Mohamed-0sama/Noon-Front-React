@@ -45,7 +45,7 @@ const HeaderFloatingLeft = () => {
                       className="nav-item text-start"
                       onMouseOver={() => subCatChanged(cat.id)}
                     >
-                      <Link className="nav-link" to={`/Home/category/${cat.mainCat}`} onClick={() => {setMyMainCat(cat.mainCat);
+                      <Link className="nav-link" to={`/category/${cat.mainCat}`} onClick={() => {setMyMainCat(cat.mainCat);
                       query("category")
                       }}>
                         {cat.mainCat}
@@ -101,7 +101,7 @@ const HeaderFloatingLeft = () => {
                           <>
                             {cat.id === x &&
                               cat.brands.map((brand) => {
-                                console.log(cat)
+                                // console.log(cat)
                                 return (
                                   <>
                                     <li

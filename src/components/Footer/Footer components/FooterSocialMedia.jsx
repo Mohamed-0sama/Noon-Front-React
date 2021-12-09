@@ -4,15 +4,15 @@ const FooterSocialMedia = () => {
     return (
         <>
              <ul
-                class="
+                className="
                 list-unstyled
                 d-flex
                 justify-content-center
                 align-items-center
               "
               >
-                <li class="">
-                  <a class="link-dark" href="#home">
+                <li className="">
+                  <a className="link-dark" href="https://www.facebook.com/noon" target="_blank" rel="noreferrer">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="40"
@@ -36,8 +36,8 @@ const FooterSocialMedia = () => {
                     </svg>
                   </a>
                 </li>
-                <li class="ms-3">
-                  <a class="link-dark" href="#home">
+                <li className="ms-3">
+                  <a className="link-dark" href="https://twitter.com/noon/" target="_blank" rel="noreferrer">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="40"
@@ -61,9 +61,9 @@ const FooterSocialMedia = () => {
                     </svg>
                   </a>
                 </li>
-                <li class="ms-3">
+                <li className="ms-3">
                   {/* there is a problem */}
-                  <a class="link-dark" href="#home">
+                  <a className="link-dark" href="https://www.instagram.com/noon/" target="_blank" rel="noreferrer">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="40"
@@ -104,8 +104,8 @@ const FooterSocialMedia = () => {
                     </svg>
                   </a>
                 </li>
-                <li class="ms-3">
-                  <a class="link-dark" href="#home">
+                <li className="ms-3">
+                  <a className="link-dark" href="https://www.linkedin.com/company/nooncom/" target="_blank" rel="noreferrer">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="40"

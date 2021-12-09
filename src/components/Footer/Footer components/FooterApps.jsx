@@ -5,21 +5,21 @@ const FooterApps = () => {
 
     return (
         <>
-            <div class="d-flex flex-column flex-sm-row">
-                <a href="#home" class="me-0 me-sm-2">
+            <div className="d-flex flex-column flex-sm-row">
+                <a className="me-0 me-sm-2" href="https://apps.apple.com/app/noon-%D9%86%D9%88%D9%86/id1269038866?ls=1" target="_blank"  rel="noreferrer">
                   <img
                   src={imagesUrl+'app-store.svg'}
                     // src="images/footer/app-store.svg"
                     style={{ height: "36px" }}
-                    alt="Home"
+                    alt="app store"
                   />
                 </a>
-                <a href="#home" class="mt-2 mt-sm-0">
+                <a className="mt-2 mt-sm-0" href="https://play.google.com/store/apps/details?id=com.noon.buyerapp" target="_blank"  rel="noreferrer">
                   <img
                    src={imagesUrl+'google-play.svg'}
                     // src="images/footer/google-play.svg"
                     style={{ height: "36px" }}
-                    alt="Home"
+                    alt="google play"
                   />
                 </a>
               </div>

@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { mySearchContext, mySetSearchContext } from "./../../../pages/Home";
 import { useContext } from "react";
-import { HomeOutlined } from "@ant-design/icons";
+// import { HomeOutlined } from "@ant-design/icons";
 
 
 const UserHeader = () => {
@@ -33,7 +33,7 @@ const UserHeader = () => {
       });
     // console.log(posts);
   }, [search]);
-  const handleSearch = () => {};
+  // const handleSearch = () => {};
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       console.log(event.target.value);
@@ -94,9 +94,9 @@ const UserHeader = () => {
                     aria-label="Search"
                     placeholder="What are you looking for?"
                   /> */}
-                {/* <label for="exampleDataList" class="form-label">Datalist example</label> */}
+                {/* <label for="exampleDataList" className="form-label">Datalist example</label> */}
                 <input
-                  class="form-control"
+                  className="form-control"
                   list="datalistOptions"
                   onChange={(event) => {
                     setSearch(event.target.value);

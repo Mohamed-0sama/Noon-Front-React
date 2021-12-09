@@ -35,6 +35,8 @@ const Home = () => {
                       <myQueryContext.Provider value={myQuery}>
                         <SetMyQueryContext.Provider value={setMyQuery}>
                           <Header />
+                          <Outlet />
+                          <Footer />
                         </SetMyQueryContext.Provider>
                       </myQueryContext.Provider>
                     </mySetSearchContext.Provider>
@@ -48,19 +50,19 @@ const Home = () => {
 
 
 
-      <myMainCatContext.Provider value={myMainCat}>
+      {/* <myMainCatContext.Provider value={myMainCat}>
         <mySubCatContext.Provider value={mySubCat}>
           <myBrandContext.Provider value={myBrand}>
             <mySearchContext.Provider value={search}>
               <myQueryContext.Provider value={myQuery}>
-                <Outlet />
+                
               </myQueryContext.Provider>
             </mySearchContext.Provider>
           </myBrandContext.Provider>
         </mySubCatContext.Provider>
-      </myMainCatContext.Provider>
+      </myMainCatContext.Provider> */}
 
-      <myMainCatContext.Provider value={myMainCat}>
+      {/* <myMainCatContext.Provider value={myMainCat}>
         <setMyMainCatContext.Provider value={setMyMainCat}>
           <mySubCatContext.Provider value={mySubCat}>
             <setMySubCatContext.Provider value={setMySubCat}>
@@ -72,7 +74,7 @@ const Home = () => {
             </setMySubCatContext.Provider>
           </mySubCatContext.Provider>
         </setMyMainCatContext.Provider>
-      </myMainCatContext.Provider>
+      </myMainCatContext.Provider> */}
     </div>
   );
 };

@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import {Col} from 'react-bootstrap'
+
 const Categoryslider = ({catName}) => {
     const [data, setData] = useState([]);
     const [filter, setFilter] = useState(data)
@@ -88,7 +89,8 @@ const Categoryslider = ({catName}) => {
                 <Slider className="bg-white"  {...settings} >
                     {filter.map((product) => {
                         return (
-                            <Card key={product.id} style={{ width: '18rem',  marginLeft: '.5rem' }}>
+                            <div className="m-2">
+                            <Card className='w-100' key={product.id} style={{ width: '18rem',  marginLeft: '.5rem' }}>
                                 <Card.Img variant="top" width="200px" height="200px" src={product.image} alt={product.title} />
                                 <Card.Body>
                                     <Card.Title>{product.title.substring(0, 12)}</Card.Title>
@@ -103,7 +105,7 @@ const Categoryslider = ({catName}) => {
 
                                     </Card.Text>
                                 </Card.Body>
-                            </Card>  
+                            </Card>  </div>
 
                         )
                     })}
@@ -171,7 +173,7 @@ const Categoryslider = ({catName}) => {
     };
     return (
         <div>
-            <div className="container my-5 py-5 bg-white inline-block">
+            <div className="container my-5 py-5 bg-white">
                 <div className="row">
                     <div className="col-6 mb-5">
                         <h5 className="display-6 fw-bolder"> {catName.toUpperCase()}</h5>

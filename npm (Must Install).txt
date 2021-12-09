@@ -3,4 +3,4 @@
 -npm i font-awesome
 -npm i redux react-redux
 -npm i react-router-dom
--npm i react-slick-carousal
+-npm i react-multi-carousel

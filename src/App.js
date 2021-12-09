@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Products from './components/Products';
 import { Route,Routes } from 'react-router-dom';
 import Categodyslider from './components/Categoryslider'
+import app from '../src/'
 
 function App() {
   return (

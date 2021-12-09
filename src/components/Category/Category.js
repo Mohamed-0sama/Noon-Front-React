@@ -1,7 +1,7 @@
 import Categoryslider from '../Categoryslider'
 import { useParams } from "react-router-dom";
 function Category() {
-    let { selectedCat } = useParams();
+    let { selectedCat } = useParams(); //homos
 
     var selected_category = selectedCat; //Mobiles Electronics
     return (

@@ -4,23 +4,28 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { mySearchContext, mySetSearchContext } from './../../../pages/Home';
 import { useContext } from 'react';
+import { useSelector } from "react-redux";
+import "./cart.css"
 
 const HeaderOne = () => {
   let navigate = useNavigate()
+  //const cart = useSelector((state)=> state.handleCart)
+  const quantity = useSelector(state => state.cart.quantity)
+  //console.log("cart",cart);
   // const [search, setsearch] = useState("");
   const search = useContext(mySearchContext)
   const setSearch = useContext(mySetSearchContext)
   const [searchOption, setSearchOption] = useState([]);
- 
+
   const imagesUrl = "https://noon-ecommerce.herokuapp.com/images/";
   useEffect(() => {
     axios
       // .get("https://jsonplaceholder.typicode.com/posts?userId=" + search)
       // http://localhost:5000/api/products?category=Mobiles
-      .get("http://localhost:5000/api/categories?subCat=" + search)
+      .get("https://noon-ecommerce.herokuapp.com/api/categories?subCat=" + search)
       .then((post) => {
         console.log(post);
         console.log(search);
@@ -30,12 +35,12 @@ const HeaderOne = () => {
       });
     // console.log(posts);
   }, [search]);
-  const handleSearch = () => {};
+  //const handleSearch = () => {};
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       console.log(event.target.value);
       navigate(`/Home/category/${event.target.value}`)
-    // `/Home/category/${cat.mainCat}`
+      // `/Home/category/${cat.mainCat}`
     }
   };
   return (
@@ -116,9 +121,9 @@ const HeaderOne = () => {
                     aria-label="Search"
                     placeholder="What are you looking for?"
                   /> */}
-                {/* <label for="exampleDataList" class="form-label">Datalist example</label> */}
+                {/* <label for="exampleDataList" className="form-label">Datalist example</label> */}
                 <input
-                  class="form-control"
+                  className="form-control"
                   list="datalistOptions"
                   onChange={(event) => {
                     setSearch(event.target.value);
@@ -153,7 +158,7 @@ const HeaderOne = () => {
                 </a>
               </li>
               <li className="nav-item sign-in">
-                <Link className="nav-link" to="/Home/TestRouting">
+                <Link className="nav-link" to="/Home/Category">
                   <span>Sign In</span>
                   <img
                     src={imagesUrl + "user_thin.svg"}
@@ -164,13 +169,16 @@ const HeaderOne = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/Home/test">
+                <Link className="nav-link" to="/Home/Cart">
                   <span>Cart</span>
                   <img
                     src={imagesUrl + "cart.svg"}
                     //  src="images/header/cart.svg"
                     alt="cart"
-                  />
+                  />{
+                    /*cart.length === 0?<span></span>:<div id="counter"><span>{cart.length}</span></div>*/
+                    quantity === 0?<span></span>:<div id="counter"><span>{quantity}</span></div>
+                  }
                 </Link>
               </li>
             </ul>

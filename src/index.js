@@ -4,18 +4,28 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 // styling
-import 'bootstrap/dist/css/bootstrap.min.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../node_modules/font-awesome/css/font-awesome.min.css';
+
 import 'antd/dist/antd.css';
 
 // Router
 import { BrowserRouter } from 'react-router-dom';
-//
+// Redux
+import { Provider } from 'react-redux';
+//import store from './redux/store'
+import { store, persistor } from "./redux/LAMA/store";
+import { PersistGate } from 'redux-persist/integration/react'
 
 
 ReactDOM.render(
- 
-  <BrowserRouter> 
-    <App />
+
+  <BrowserRouter>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
+    </Provider>
   </BrowserRouter>,
   document.getElementById('root')
 );

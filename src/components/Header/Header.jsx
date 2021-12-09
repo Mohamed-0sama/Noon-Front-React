@@ -18,7 +18,7 @@ const Header = () => {
   // const imagesUrl = "https://noon-ecommerce.herokuapp.com/images/"
   const [categories, setCategories] = useState([])
   useEffect(() => {
-    axios.get("http://localhost:5000/api/categories")
+    axios.get("https://noon-ecommerce.herokuapp.com/api/categories")
   .then(function (response) {
     // handle success
     setCategories(response.data)

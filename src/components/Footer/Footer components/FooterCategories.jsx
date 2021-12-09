@@ -6,23 +6,23 @@ const FooterCategories = () => {
     return (
         <>
               <div
-            class="row m-auto"
+            className="row m-auto"
             style={{ padding: "20px", textAlign: "start" }}
           >
-            <div class="row d-flex">
+            <div className="row d-flex">
               {categories.map(category =>{
                 return (
                 <>
-                <div class="col-lg-2 col-md-4 col-sm-6">
+                <div className="col-lg-2 col-md-4 col-sm-6">
                 <Link to={`/Home/category/${category.mainCat}`}>
-                <h6 class="mt-3">{category.mainCat}</h6>
+                <h6 className="mt-3">{category.mainCat}</h6>
                 </Link>
-                <ul class="nav flex-column" style={{ fontSize: "13px" }}>
+                <ul className="nav flex-column" style={{ fontSize: "13px" }}>
                   {category.subCat.map((subCategory)=>{
                     return(
                       <>
-                      <li class="nav-item mb-2">
-                  <Link to={`/Home/search?category=${category.mainCat}&subCat=${subCategory}`} class="nav-link p-0 text-muted">
+                      <li className="nav-item mb-2">
+                  <Link to={`/Home/search?category=${category.mainCat}&subCat=${subCategory}`} className="nav-link p-0 text-muted">
                     {subCategory}
                   </Link>
                   </li>

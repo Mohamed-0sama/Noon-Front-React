@@ -5,7 +5,8 @@ function Products() {
     const [data, setData] = useState([]);
     const [filter, setFilter] = useState(data)
     const [loading, setLoading] = useState(false)
-    let componentMounted = true;
+    const [componentMounted, setcomponentMounted] = useState(true)
+    //let componentMounted = true;
     useEffect(() => {
         const getProducts = async () => {
             setLoading(true);
@@ -17,11 +18,11 @@ function Products() {
                 console.log(filter)
             }
             return () => {
-                componentMounted = false;
+                setcomponentMounted(false);
             }
         }
         getProducts();
-    }, [])
+    })
 
     const Loading = () => {
         return (
@@ -80,12 +81,12 @@ function Products() {
                     return (
                         <>
                             <div className="col-md-3 mb-4">
-                                <div class="card h-100 text-center p-4" key={product.id} >
-                                    <img src={product.image} class="card-img-top" alt={product.title} height="250px" />
-                                    <div class="card-body">
-                                        <h5 class="card-title mb-0">{product.title.substring(0, 12)}...</h5>
-                                        <p class="card-text lead ">${product.price}</p>
-                                        <a href="#home" class="btn btn-primary">View Product</a>
+                                <div className="card h-100 text-center p-4" key={product.id} >
+                                    <img src={product.image} className="card-img-top" alt={product.title} height="250px" />
+                                    <div className="card-body">
+                                        <h5 className="card-title mb-0">{product.title.substring(0, 12)}...</h5>
+                                        <p className="card-text lead ">${product.price}</p>
+                                        <a href="#home" className="btn btn-primary">View Product</a>
                                     </div>
                                 </div>
                             </div>

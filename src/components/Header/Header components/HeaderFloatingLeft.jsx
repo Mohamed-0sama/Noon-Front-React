@@ -1,10 +1,10 @@
 // floating left categories which contain the div of All CATEGORIES button when mouseOver
 // 1- the div of All CATEGORIES button => all categories + top brands + most popular
 
-import React, {useContext, useState} from 'react'
+import React, {useContext/*, useState*/} from 'react'
 import { Link } from 'react-router-dom';
 import { categoriesContext, subCatChangedContext, xContext } from '../Header';
-import { myBrandContext, myMainCatContext, setMyBrandContext, setMyMainCatContext, setMySubCatContext, mySubCatContext }from './../../../pages/Home';
+import { /*myBrandContext,*/ myMainCatContext, setMyBrandContext, setMyMainCatContext, setMySubCatContext/*, mySubCatContext*/ }from './../../../pages/Home';
 // import { mySubCatContext } from './../../../pages/Home';
 import { myQueryContext, SetMyQueryContext } from './../../../pages/Home';
 const HeaderFloatingLeft = () => {
@@ -14,9 +14,9 @@ const HeaderFloatingLeft = () => {
     const x = useContext(xContext)
     const myMainCat = useContext(myMainCatContext)
     const setMyMainCat = useContext(setMyMainCatContext)
-    const mySubCat = useContext(mySubCatContext)
+    //const mySubCat = useContext(mySubCatContext)
     const setMySubCat = useContext(setMySubCatContext)
-    const myBrand = useContext(myBrandContext)
+    //const myBrand = useContext(myBrandContext)
     const setMyBrand = useContext(setMyBrandContext)
     const myQuery = useContext(myQueryContext)
     const setMyQuery = useContext(SetMyQueryContext)

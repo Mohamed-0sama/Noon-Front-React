@@ -5,8 +5,8 @@ const FooterApps = () => {
 
     return (
         <>
-            <div class="d-flex flex-column flex-sm-row">
-                <a href="#home" class="me-0 me-sm-2">
+            <div className="d-flex flex-column flex-sm-row">
+                <a href="#home" className="me-0 me-sm-2">
                   <img
                   src={imagesUrl+'app-store.svg'}
                     // src="images/footer/app-store.svg"
@@ -14,7 +14,7 @@ const FooterApps = () => {
                     alt="Home"
                   />
                 </a>
-                <a href="#home" class="mt-2 mt-sm-0">
+                <a href="#home" className="mt-2 mt-sm-0">
                   <img
                    src={imagesUrl+'google-play.svg'}
                     // src="images/footer/google-play.svg"

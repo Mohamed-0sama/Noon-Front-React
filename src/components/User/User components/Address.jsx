@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "antd";
+import { Input } from 'antd';
 import "./profile.scss";
 import axios from "axios";
 const Address = () => {
   const [userInfo, setUserInfo] = useState({});
+  const [enableEdit, setEnableEdit] = useState(false) 
   useEffect(() => {
     axios
       .get(`http://localhost:5000/api/users/find/61965bc1d77aff0d40a1d006`)
@@ -24,6 +26,7 @@ const Address = () => {
           <div className="col-md-6 col-lg-3">
             <span>Name</span>
             <p>{userInfo.username}</p>
+            <Input placeholder="User Name" bordered={false} disabled={true}/>
           </div>
           <div className="col-md-6 col-lg-3">
             <span>Address</span>

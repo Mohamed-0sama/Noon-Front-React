@@ -8,12 +8,12 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { mySearchContext, mySetSearchContext } from "./../../../pages/Home";
 import { useContext } from "react";
-import { DropdownButton, Navbar } from "react-bootstrap";
+import { Navbar } from "react-bootstrap";
 // import { Dropdown } from "react-bootstrap";
-import { Button } from "antd";
+// import { Button } from "antd";
 import { Menu } from "antd";
 import { Dropdown } from "antd";
-import { CaretDownOutlined, DownOutlined, HomeOutlined, ShopOutlined } from "@ant-design/icons";
+import { CaretDownOutlined, HomeOutlined, ShopOutlined } from "@ant-design/icons";
 import { UserOutlined } from '@ant-design/icons';
 //
 const menu = (

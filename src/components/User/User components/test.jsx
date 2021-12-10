@@ -1,21 +1,14 @@
 // import React from 'react'
 // import "./profile.scss";
-import { Alert, Card, Tooltip } from "antd";
+import { Alert, Card } from "antd";
 import React, { useState, useEffect, useRef} from "react";
 import { Form, Input, Button } from "antd";
-import { HomeFilled, PhoneOutlined, UserOutlined } from "@ant-design/icons";
+import { UserOutlined, LockOutlined, MailOutlined } from "@ant-design/icons";
 import axios from "axios";
-import { message, Space } from 'antd';
 // import {Form.Control} from 'react-bootstrap'
 // const HorizontalLoginForm = () => {
     
-  const success = () => {
-    message.success('Data Saved');
-  };
-  const error = () => {
-    message.error('sorry, there was a problem');
-  };
-const Address = () => {
+const Test = () => {
     const [enableEdit, setEnableEdit] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
   const [successMsg, setSuccessMsg] = useState("");
@@ -64,8 +57,8 @@ const Address = () => {
     console.log("Finish:", values);
     setLoading(true);
     axios.put(`http://localhost:5000/api/users/edit/61965bc1d77aff0d40a1d006`, values)
-    .then(() => {success()})
-    .catch((err) =>{error(); setErrMsg(err.message)} )
+    .then(() => {setSuccessMsg("ALL is Done"); setErrMsg("")})
+    .catch((err) =>{setErrMsg(err.message); setSuccessMsg("")} )
     .finally(() => setLoading(false));
   };
 
@@ -86,24 +79,19 @@ const Address = () => {
         title="General Information"
         //   extra={<a href="#h">More</a>}
       >
-        {/* {
+        {
           successMsg&&<Alert message={successMsg} type="success" />
-        } */}
+        }
 
         {
-          errMsg&&<Alert message={errMsg} type="error" closable/>
+          errMsg&&<Alert message={errMsg} type="error" />
         }
-        {/* <Space>
-    <Button onClick={success}>Success</Button>
-    <Button onClick={error}>Error</Button>
-  </Space> */}
            <Form
           form={form}
           layout="vertical"
           // layout="inline"
           // initialValues={userInfo}
-          initialValues={{...userInfo, address: "safaga", phone : "01006150263"}}
-
+          initialValues={userInfo}
         
           name="horizontal_login"
           onFinish={onFinish}
@@ -145,7 +133,7 @@ const Address = () => {
                 ]}
               >
                 <Input
-                  prefix={<HomeFilled className="site-form-item-icon" />}
+                  // prefix={<UserOutlined className="site-form-item-icon" />}
                   placeholder="Address"
                   bordered={false}
                   disabled={!enableEdit}
@@ -167,7 +155,7 @@ const Address = () => {
                 ]}
               >
                 <Input
-                  prefix={<PhoneOutlined className="site-form-item-icon" />}
+                  // prefix={<MailOutlined className="site-form-item-icon" />}
                   placeholder="Phone Number"
                   type="number"
                   bordered={false}
@@ -182,11 +170,8 @@ const Address = () => {
             >
               <Form.Item shouldUpdate className="text-center" label=" ">
                 {() => (
-                  <Tooltip title="Must change all fields to enable this button" color={"#2db7f5"} key={"#2db7f5"}>
-                  
                   <Button
                     type="primary"
-                    // onClick={success}
                     // size="large"
                     htmlType="submit"
                     disabled={
@@ -198,7 +183,6 @@ const Address = () => {
                   >
                     Save
                   </Button>
-                  </Tooltip>
                 )}
               </Form.Item>
             </div>
@@ -220,10 +204,30 @@ const Address = () => {
         
       </Card>
       {/*fffffffffffffffffffffffffffffffffffffffffff  */}
-      
+      <Card
+        style={{ marginTop: 16 }}
+        type="inner"
+        title="Link Your Account"
+        //   extra={<a href="#h">More</a>}
+      >
+        <div className="">
+          <div className="my-1 fw-bold">Homat Al Watan account</div>
+          <div className="row">
+            <div className="col-md-8 d-flex align-items-center">
+              Now you can link your Homat Al Watan account with your noon
+              account
+            </div>
+            <div className="text-end col-md-4 mt-3 mt-md-0">
+              <button type="button" className="btn button__firstDiv">
+                Link Account
+              </button>
+            </div>
+          </div>
+        </div>
+      </Card>
      
     </div>
   );
 };
 
-export default Address;
+export default Test;

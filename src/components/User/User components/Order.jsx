@@ -2,6 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Card, Button, Alert} from "antd";
 import axios from "axios";
 import RatingProduct from "./RatingProduct.jsx";
+import { message, Space } from 'antd';
+
+
+const success = () => {
+  message.success('Data Saved');
+};
+const error = () => {
+  message.error('sorry, there was a problem');
+};
 const Order = () => {
   const imagesUrl = "https://noon-ecommerce.herokuapp.com/images/";
   const [products, setProducts] = useState(() => []);
@@ -13,7 +22,14 @@ const Order = () => {
   const [errMsg, setErrMsg] = useState("");
   useEffect(() => {
     axios
-      .get("https://noon-ecommerce.herokuapp.com/api/orders/find/61965b8bd77aff0d40a1d004")
+      .get("https://noon-ecommerce.herokuapp.com/api/orders/find/61965b8bd77aff0d40a1d004", {
+        
+          headers: {
+            'token': localStorage.getItem('userToken')
+          }
+        
+        // token : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOTQ1NGNkYzI0MGFhNzlkNDYxMGViNiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzOTA3MjM0MCwiZXhwIjoxNjM5MzMxNTQwfQ.tfOeCrY3HjvmFwMqmF3t-ImY35Of75sx6bD-psAgabc"
+      })
       // .get("http://localhost:5000/api/orders/find/61965b8bd77aff0d40a1d004")
       .then(function (response) {
         setOrder(response.data[0]);
@@ -31,6 +47,8 @@ const Order = () => {
           setProducts(data);
         });
         console.log(promises);
+      }).catch((err) => {
+        setErrMsg(err.message)
       });
   }, []);
   // const rateORcancel = () => {
@@ -70,9 +88,9 @@ const Order = () => {
   
   return (
     <div>
-      {successMsg && <Alert message={successMsg} type="success" />}
+      {/* {successMsg && <Alert message={successMsg} type="success" closable />} */}
 
-      {errMsg && <Alert message={errMsg} type="error" />}
+      {errMsg && <Alert message={errMsg} type="error" closable/>}
      
       {products.map((product) => {
         console.log(products);

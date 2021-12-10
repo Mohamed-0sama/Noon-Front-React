@@ -61,7 +61,7 @@ const HeaderOne = () => {
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       console.log(event.target.value);
-      navigate(`/Home/category/${event.target.value}`);
+      navigate(`/category/${event.target.value}`);
       // `/Home/category/${cat.mainCat}`
     }
   };

@@ -51,7 +51,7 @@ const Footer = () => {
   //   },
   // ]);
   return (
-    <div>
+    <div className="mainFooter">
       <FooterOne />
 
       <footer className="py-0 py-md-4">

@@ -214,3 +214,119 @@
     //       </div>
     //     </div>
     //   </div>
+
+    // user address
+
+            <Form
+          form={form}
+          layout="vertical"
+          // layout="inline"
+          // initialValues={userInfo}
+          initialValues={{ username: userInfo.username, address: userInfo.email, phone: "01006150263" }}
+        
+          name="horizontal_login"
+          onFinish={onFinish}
+        >
+          {/*  */}
+          
+          {/* {console.log(userInfo.username)} */}
+          <div className="row">
+            <div className="col-md-6 col-lg-3">
+              <Form.Item
+                name="username"
+                label="Name"
+                // className="col-md-6 mx-0"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your firsr name!",
+                  },
+                ]}
+              >
+                <Input
+                  prefix={<UserOutlined className="site-form-item-icon" />}
+                  placeholder="Name"
+                  bordered={false}
+                  disabled={!enableEdit}
+                />
+              </Form.Item>
+            </div>
+            <div className="col-md-6 col-lg-3">
+              <Form.Item
+                name="address"
+                label="Address"
+                // className="col-md-6 mx-0"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your Address",
+                  },
+                ]}
+              >
+                <Input
+                  // prefix={<UserOutlined className="site-form-item-icon" />}
+                  placeholder="Address"
+                  bordered={false}
+                  disabled={!enableEdit}
+                />
+              </Form.Item>
+            </div>
+            {/* </div> */}
+            {/* <div className="row"> */}
+            <div className="col-md-6 col-lg-3">
+              <Form.Item
+                name="phone"
+                label="Phone Number"
+                // className="col-md-6 mx-0"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your Phone Number!",
+                  },
+                ]}
+              >
+                <Input
+                  // prefix={<MailOutlined className="site-form-item-icon" />}
+                  placeholder="Phone Number"
+                  type="number"
+                  bordered={false}
+                  disabled={!enableEdit}
+                />
+              </Form.Item>
+            </div>
+            <div
+              className="col-md-6 col-lg-3"
+              ref={saveBtn}
+              style={{ display: "none" }}
+            >
+              <Form.Item shouldUpdate className="">
+                {() => (
+                  <Button
+                    type="primary"
+                    htmlType="submit"
+                    disabled={
+                      !form.isFieldsTouched(true) ||
+                      !!form
+                        .getFieldsError()
+                        .filter(({ errors }) => errors.length).length
+                    }
+                  >
+                    Save
+                  </Button>
+                )}
+              </Form.Item>
+            </div>
+            <div className="col-md-6 col-lg-3" ref={editBtn}>
+              <Form.Item shouldUpdate className="">
+                <button
+                  type="button"
+                  className="btn button__firstDiv"
+                  style={{ background: "#F1F3FA" }}
+                  onClick={dispaly}
+                >
+                  Edit
+                </button>
+              </Form.Item>
+            </div>
+          </div>
+        </Form>

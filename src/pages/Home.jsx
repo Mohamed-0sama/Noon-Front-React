@@ -5,6 +5,7 @@ import Footer from "./../components/Footer/Footer";
 // import FooterThree from "../components/Footer/Footer components/FooterThree";
 import { Outlet } from "react-router";
 
+
 export const myMainCatContext = React.createContext();
 export const setMyMainCatContext = React.createContext();
 export const mySubCatContext = React.createContext();
@@ -24,6 +25,7 @@ const Home = () => {
   const [myQuery, setMyQuery] = useState("");
   return (
     <div>
+    
       <myMainCatContext.Provider value={myMainCat}>
         <setMyMainCatContext.Provider value={setMyMainCat}>
           <mySubCatContext.Provider value={mySubCat}>

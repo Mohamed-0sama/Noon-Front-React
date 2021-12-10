@@ -1,13 +1,20 @@
 // import React from 'react'
 import "./profile.scss";
-import { Alert, Card } from "antd";
+import { Alert, Card, Tooltip } from "antd";
 import React, { useState, useEffect } from "react";
 import { Form, Input, Button } from "antd";
 import { UserOutlined, LockOutlined, MailOutlined } from "@ant-design/icons";
 import axios from "axios";
+import { message, Space } from 'antd';
+
 // import {Form.Control} from 'react-bootstrap'
 // const HorizontalLoginForm = () => {
-
+  const success = () => {
+    message.success('Data Saved');
+  };
+  const error = () => {
+    message.error('sorry, there was a problem');
+  };
 const Profile = () => {
   const [userInfo, setUserInfo] = useState(null);
   const [successMsg, setSuccessMsg] = useState("");
@@ -22,11 +29,13 @@ const Profile = () => {
   }, []);
 
   useEffect(() => {
-    // const userData = JSON.parse(localStorage.getItem('userData'))
+    // const userData = JSON.parse(localStorage.getItem('userToken'))
+   const userId = localStorage.getItem("userId")
     // axios.headers.setDefault // in app component
     setLoading(true);
     axios
       // .get(`http://localhost:5000/api/users/find/${userData._id}`)
+      // .get(`http://localhost:5000/api/users/find/${userId}`)
       .get(`http://localhost:5000/api/users/find/61965bc1d77aff0d40a1d006`)
       .then((response) => {
         console.log(response.data);
@@ -42,13 +51,13 @@ const Profile = () => {
         setLoading(false);
       })
   }, []);
- 
+
   const onFinish = (values) => {
     console.log("Finish:", values);
     setLoading(true);
     axios.put(`http://localhost:5000/api/users/edit/61965bc1d77aff0d40a1d006`, values)
-    .then(() => {setSuccessMsg("ALL is Done"); setErrMsg("")})
-    .catch((err) =>{setErrMsg(err.message); setSuccessMsg("")} )
+    .then(() => {success()})
+    .catch((err) =>{error(); setErrMsg(err.message)} )
     .finally(() => setLoading(false));
   };
 
@@ -69,18 +78,19 @@ const Profile = () => {
         title="General Information"
         //   extra={<a href="#h">More</a>}
       >
-        {
+        {/* {
           successMsg&&<Alert message={successMsg} type="success" />
-        }
+        } */}
 
         {
-          errMsg&&<Alert message={errMsg} type="error" />
+          errMsg&&<Alert message={errMsg} type="error" closable/>
         }
         <Form
           form={form}
           layout="vertical"
           // layout="inline"
-          initialValues={userInfo}
+          initialValues={{...userInfo, lastname: "Nasr", password : "01006150263"}}
+          // initialValues={{username : userInfo.username, password : "01006150263"}}
           name="horizontal_login"
           onFinish={onFinish}
         >
@@ -165,7 +175,9 @@ const Profile = () => {
           <div className="col-12 d-flex justify-content-end">
             {/* button__firstDiv */}
             <Form.Item shouldUpdate className="">
+           
               {() => (
+                 <Tooltip title="Must change all fields to enable this button" color={"#2db7f5"} key={"#2db7f5"}>
                 <Button
                   type="primary"
                   htmlType="submit"
@@ -178,7 +190,9 @@ const Profile = () => {
                 >
                   Save
                 </Button>
+                </Tooltip>
               )}
+             
             </Form.Item>
           </div>
         </Form>

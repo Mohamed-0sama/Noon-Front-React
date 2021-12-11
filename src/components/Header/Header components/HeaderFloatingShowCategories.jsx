@@ -1,16 +1,14 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import { Link } from 'react-router-dom';
-import { categoriesContext, subCatChangedContext, xContext, mouseOverContext, mouseOutContext, elemRef_show__categoriesContext } from '../Header';
+import {  xContext, mouseOverContext, mouseOutContext } from '../Header';
 
     
-const HeaderFloatingShowCategories = () => {
+const HeaderFloatingShowCategories = ({ categories, elemRef_show__categories}) => {
   const imagesUrl = "https://noon-ecommerce.herokuapp.com/images/"
-    const categories = useContext(categoriesContext)
-    const subCatChanged = useContext(subCatChangedContext)
+  // const [mouseOverCategoryID, setMouseOverCategoryID] = useState(1);
     const x = useContext(xContext)
     const mouseOver = useContext(mouseOverContext)
     const mouseOut = useContext(mouseOutContext)
-    const elemRef_show__categories = useContext(elemRef_show__categoriesContext)
     return (
         <>
              <div

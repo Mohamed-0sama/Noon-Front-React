@@ -6,7 +6,7 @@ import { Navigate, Route, Routes } from "react-router";
 // import Footer from './components/Footer/Footer';
 
 // import FooterThree from "./components/Footer/Footer components/FooterThree";
-import RoutingDiv from "./components/RoutingDiv";
+// import RoutingDiv from "./components/RoutingDiv";
 import Home from "./pages/Home";
 import { React } from "react";
 import { useLocation } from "react-router-dom";
@@ -28,11 +28,11 @@ function App() {
         {/* <Route path="/" exact element={<Home />} /> */}
         <Route path="/Home" element={<Navigate replace to="/" />} />
         <Route path="/" element={<Home />}>
-          <Route index element={<Products />} />
+          {/* <Route index element={<Products />} /> */}
           {/* <Route path="/Home/products" element={<Products />} /> */}
-          <Route path="/category/:selectedCat" element={<RoutingDiv />} />
-          <Route path="/search" element={<RoutingDiv />} />
-          <Route path="/category/:selectedCat" element={<RoutingDiv />} />
+          {/* <Route path="/category/:selectedCat" element={<RoutingDiv />} /> */}
+          {/* <Route path="/search" element={<RoutingDiv />} /> */}
+          {/* <Route path="/category/:selectedCat" element={<RoutingDiv />} /> */}
           <Route path="/Cart" element={<Navbar />} />
           <Route path="/Home2" element={<Home2 />} />
         </Route>

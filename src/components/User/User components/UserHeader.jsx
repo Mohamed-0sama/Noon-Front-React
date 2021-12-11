@@ -6,18 +6,14 @@ import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { mySearchContext, mySetSearchContext } from "./../../../pages/Home";
-import { useContext } from "react";
 // import { HomeOutlined } from "@ant-design/icons";
 
 
 const UserHeader = () => {
   let navigate = useNavigate();
   // const [search, setsearch] = useState("");
-  const search = useContext(mySearchContext);
-  const setSearch = useContext(mySetSearchContext);
+  const [search, setSearch] = useState("");
   const [searchOption, setSearchOption] = useState([]);
-
   const imagesUrl = "https://noon-ecommerce.herokuapp.com/images/";
   useEffect(() => {
     axios

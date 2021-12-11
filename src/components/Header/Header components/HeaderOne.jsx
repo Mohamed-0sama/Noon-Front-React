@@ -6,8 +6,6 @@ import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { mySearchContext, mySetSearchContext } from "./../../../pages/Home";
-import { useContext } from "react";
 import { Navbar } from "react-bootstrap";
 // import { Dropdown } from "react-bootstrap";
 // import { Button } from "antd";
@@ -36,10 +34,8 @@ const menu = (
 const HeaderOne = () => {
   let isLoggedIn = true;
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
-  let navigate = useNavigate();
-  // const [search, setsearch] = useState("");
-  const search = useContext(mySearchContext);
-  const setSearch = useContext(mySetSearchContext);
+  let navigate = useNavigate();  
+  const [search, setSearch] = useState("");
   const [searchOption, setSearchOption] = useState([]);
 
   const imagesUrl = "https://noon-ecommerce.herokuapp.com/images/";
@@ -189,25 +185,7 @@ const HeaderOne = () => {
                     My Account <CaretDownOutlined className="ms-2"/>
                   </Link>
                 </Dropdown>
-                {/* <DropdownButton
-                  className={isLoggedIn ? "d-block" : "d-none"}
-                  align="end"
-                  title="My Account"
-                  id="dropdown-menu-align-end"
-                >
-                  <Dropdown.Item eventKey="1">
-                    <a href="#d"><Link to="/User/order">order</Link></a>
-                    </Dropdown.Item>
-                  
-                  <Dropdown.Item eventKey="2">
-                    <Link to="/User/address">address</Link>
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="3">
-                    <Link to="/User/profile">profile</Link>
-                  </Dropdown.Item>
-                  <Dropdown.Divider />
-                  <Dropdown.Item eventKey="4">Sign out</Dropdown.Item>
-                </DropdownButton> */}
+             
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/Cart">

@@ -27,29 +27,7 @@ const Footer = () => {
       // cleanup
     }
   }, []);
-  // const [categories, setCategories] = useState([
-  //   {
-  //     id: "1",
-  //     mainCat: "Electronics",
-  //     subCat: ["TV", "computer", "mobiles", "tablet"],
-  //     brands: ["TV", "computer", "mobiles", "tablet"],
-  //     link: "https://ant.design/components/dropdown",
-  //   },
-  //   {
-  //     id: "2",
-  //     mainCat: "clothes",
-  //     subCat: ["TV2", "computer2", "mobiles2", "tablet2"],
-  //     brands: ["TV3", "computer3", "mobiles3", "tablet3"],  
-  //     link: "https://ant.design/components/dropdown",
-  //   },
-  //   {
-  //     id: "3",
-  //     mainCat: "Toys",
-  //     subCat: ["boy", "girl", "small toys", "big toys", "adult toys"],
-  //     brands: ["toys", "toys", "toys", "toys"],
-  //     link: "https://ant.design/components/dropdown",
-  //   },
-  // ]);
+  
   return (
     <div className="mainFooter">
       <FooterOne />

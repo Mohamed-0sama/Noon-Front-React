@@ -16,7 +16,7 @@ import { Outlet } from "react-router";
 const { Header, Sider, Content } = Layout;
 // import "{ant-tooltip-inner}"
 const Data = () => {
-  const [widowWidth, setWindowWidth] = useState(() => {
+  const [windowWidth, setWindowWidth] = useState(() => {
     return window.innerWidth;
   });
   const siderRef = useRef();
@@ -25,13 +25,13 @@ const Data = () => {
     window.addEventListener("resize", () => {
       setWindowWidth(window.innerWidth);
     });
-  }, [widowWidth]);
+  }, [windowWidth]);
   const [collapsed, setCollapsed] = useState(true);
   const [name, setName] = useState("");
   const toggle = () => {
     console.log(!collapsed);
 
-    if (widowWidth <= 576) {
+    if (windowWidth <= 576) {
       setCollapsed(true);
       siderRef.current.style.marginLeft = -80
       if (siderRef.current.style.marginLeft === "-80px") {

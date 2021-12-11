@@ -47,8 +47,9 @@ const Register = () => {
       .then((res) => {
         localStorage.setItem("userToken", res.data.accessToken);
         localStorage.setItem("userId", res.data._id);
+        localStorage.setItem("isLoggedIn", "true");
         // axios.defaults.headers.common = { Authorization: res.accessToken };
-        navigate("/");
+        navigate("/", { replace: true });
       })
       .catch((err) => {
         console.log(err);

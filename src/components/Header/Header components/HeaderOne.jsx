@@ -13,7 +13,7 @@ import "./cart.css"
 const HeaderOne = () => {
   let navigate = useNavigate()
   //const cart = useSelector((state)=> state.handleCart)
-  const quantity = useSelector(state => state.cart.quantity)
+  const quantity = useSelector(state => state.cart.quan)
   //console.log("cart",cart);
   // const [search, setsearch] = useState("");
   const search = useContext(mySearchContext)

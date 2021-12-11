@@ -66,7 +66,7 @@ const Cart = () => {
             </div>
         )
     }
-    const pricArr = state.map(p => +p.price * p.quantity); 
+    const pricArr = state.map(p => +p.price * p.quan); 
 
     const total = pricArr.reduce(getTotalPrice, 0); 
     const numOfItem = state.length;

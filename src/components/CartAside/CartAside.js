@@ -5,7 +5,7 @@ import { ResetCart } from "../../redux/LAMA/cartRedux"
 import axios from 'axios'
 export default function CartAside(props) {
     const state_products = useSelector((state) => state.cart.products);
-    const api_products = state_products.map(p => { return { "productId": p.id, "quantity": p.quantity } })
+    const api_products = state_products.map(p => { return { "productId": p.id, "quantity": p.quan } })
     //console.log(api_products);
     const navigate = useNavigate();
     const userId = localStorage.getItem("userId");

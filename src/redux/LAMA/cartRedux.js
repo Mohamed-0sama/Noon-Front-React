@@ -4,44 +4,45 @@ const cartSlice = createSlice({
   name: "cart",
   initialState: {
     products: [],
-    quantity: 0,
+    quan: 0,
     //total: 0,
   },
   reducers: {
     addItemCart: (state, action) => {
-      const exist = state.products.find((x) => x.id === action.payload.id);
+      //console.log(action);
+      const exist = state.products.find((x) => x._id === action.payload._id);
       if (exist) {
-        exist.quantity = action.payload.quantity;
+        exist.quan = action.payload.quan;
       }
       else {
-        state.quantity += 1;
+        state.quan += 1;
         state.products.push(action.payload);
-        //state.total += action.payload.price * action.payload.quantity;
+        //state.total += action.payload.price * action.payload.quan;
       }
     },
     addProduct: (state, action) => {
-      const exist = state.products.find((x) => x.id === action.payload.id);
+      const exist = state.products.find((x) => x._id === action.payload._id);
       if (exist) {
-        exist.quantity++;
+        exist.quan++;
       }
       else {
-        state.quantity += 1;
+        state.quan += 1;
         state.products.push(action.payload);
-        //state.total += action.payload.price * action.payload.quantity;
+        //state.total += action.payload.price * action.payload.quan;
       }
     },
     delProduct: (state, action) => {
-      const exist = state.products.find((x) => x.id === action.payload.id);
-      if (exist.quantity === 1) {
-        state.products = state.products.filter((x) => x.id !== exist.id);
-        state.quantity -= 1;
+      const exist = state.products.find((x) => x._id === action.payload._id);
+      if (exist.quan === 1) {
+        state.products = state.products.filter((x) => x._id !== exist._id);
+        state.quan -= 1;
       } else {
-        exist.quantity--;
+        exist.quan--;
       }
     },
     ResetCart: (state) => {
       state.products= [];
-      state.quantity= 0;
+      state.quan= 0;
     },
   }
 });

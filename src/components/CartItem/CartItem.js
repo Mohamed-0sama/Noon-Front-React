@@ -1,6 +1,7 @@
 import React from 'react'
 
 export default function CartItem(props) {
+    const ImageUrl = "https://noon-ecommerce.herokuapp.com/images/";
     return (
         <>
             <div className="col-12 d-flex justify-content-between">
@@ -8,7 +9,7 @@ export default function CartItem(props) {
                 <div className="chekout-cart d-flex flex-1 justify-content-between">
                     <div className="d-flex ">
                         <div className="cart-img me-3">
-                            <img src={props.product.image} alt="product" className="img-fluid" width="150px" />
+                            <img src={ImageUrl+props.product.imageSrc} alt="product" className="img-fluid" width="150px" />
                         </div>
                         <div className="cart-content">
                             <div>
@@ -53,7 +54,7 @@ export default function CartItem(props) {
                                 1
                             </button> */}
                             <p className="lead fw-bold">
-                                {props.product.quantity} X <span className="semi-hidden">EGP</span>{props.product.price} = <span className="semi-hidden">EGP</span>{props.product.quantity * props.product.price}
+                                {props.product.quan} X <span className="semi-hidden">EGP</span>{props.product.price} = <span className="semi-hidden">EGP</span>{props.product.quan * props.product.price}
                             </p>
                             <button className="btn btn-outline-dark me-4" onClick={(p)=>props.handleDel(props.product)}>
                                 <i className="fa fa-minus"></i>

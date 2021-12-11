@@ -1,43 +1,25 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import FooterApps from "./Footer components/FooterApps";
 import FooterCategories from "./Footer components/FooterCategories";
 import FooterOne from "./Footer components/FooterOne";
 import FooterSocialMedia from "./Footer components/FooterSocialMedia";
 import FooterThree from "./Footer components/FooterThree";
 import "./footer.scss";
-import  axios  from 'axios';
+// import  axios  from 'axios';
+// import { Skeleton } from 'antd';
 
 export const categoriesContext = React.createContext();
 
-const Footer = () => {
-  const [categories, setCategories] = useState(() =>[])
-  useEffect(() => {
-    axios.get("https://noon-ecommerce.herokuapp.com/api/categories") // why only accepets json server
-  .then(function (response) {
-    // handle success
-    setCategories(response.data.slice(0, 6))
-    console.log(response.data);
-  })
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-  })
-  // console
-    return () => {
-      // cleanup
-    }
-  }, []);
-  
-  return (
+const Footer = ({ categories, loading}) => { 
+return (
     <div className="mainFooter">
       <FooterOne />
 
       <footer className="py-0 py-md-4">
         <div className="container-fluid">
-          {/* <!-- <footer className="py-5"> --> */}
-          <categoriesContext.Provider value={categories}>
-        <FooterCategories /> 
-        </categoriesContext.Provider>
+      
+        <FooterCategories categories={categories} loading={loading}/> 
+      
           <div className="row mt-3">
             <div
               className="

@@ -1,12 +1,11 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { RightSquareOutlined } from "@ant-design/icons";
 import "./header.scss";
-import axios from "axios";
+
 import HeaderOne from "./Header components/HeaderOne.jsx";
 import HeaderFloatingLeft from "./Header components/HeaderFloatingLeft";
 import HeaderFloatingShowCategories from "./Header components/HeaderFloatingShowCategories";
-// import { Skeleton } from 'antd';
 import { Spin } from 'antd';
 import { SyncOutlined  } from '@ant-design/icons';
 
@@ -14,27 +13,10 @@ const antIcon = <SyncOutlined  style={{ fontSize: 20 }} spin />;
 export const xContext = React.createContext();
 export const mouseOverContext = React.createContext();
 export const mouseOutContext = React.createContext();
-const Header = () => {
-  const [loading, setLoading] = useState(false);
+const Header = ({ categories, loading}) => {
+  // const [loading, setLoading] = useState(false);
 
   const [x, setX] = useState(1);
-  // const imagesUrl = "https://noon-ecommerce.herokuapp.com/images/"
-  const [categories, setCategories] = useState([]);
-  useEffect(() => {
-    setLoading(true);
-    axios
-      .get("https://noon-ecommerce.herokuapp.com/api/categories")
-      .then(function (response) {
-        setCategories(response.data);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      }).finally(() => {
-        setLoading(false);
-      });
-    // console
-  }, []);
   const elemRef_show__categories = useRef();
   const elemRef_second__navbar = useRef();
   // const elemRef_subCat = useRef();

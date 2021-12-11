@@ -1,8 +1,10 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import { categoriesContext } from '../Footer'
-const FooterCategories = () => {
-    const categories = useContext(categoriesContext)
+import { Skeleton } from 'antd';
+const FooterCategories = ({ categories, loading}) => {
+    if (loading) {
+      return <Skeleton active />
+    }
     return (
         <>
               <div

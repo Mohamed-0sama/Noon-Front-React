@@ -16,7 +16,14 @@ import { Dropdown } from "antd";
 import { CaretDownOutlined, HomeOutlined, ShopOutlined } from "@ant-design/icons";
 import { UserOutlined } from '@ant-design/icons';
 //
+const Logout=()=>{
+  localStorage.removeItem("userToken");
+  localStorage.removeItem("userId");
+  localStorage.removeItem("isLoggedIn");
+
+}
 const menu = (
+
   <Menu style={{width: "150px", 
   position: "relative", top: "10px", right: "50px"
   }}>
@@ -30,7 +37,7 @@ const menu = (
       <Link to="/User/profile" className="d-flex align-items-center"><UserOutlined className="me-2"/>profile</Link>
     </Menu.Item>
     <Menu.Divider className="text-center"/>
-    <Menu.Item key="4" className="text-center" onClick={alert("Hello")}>sign out</Menu.Item>
+    <Menu.Item onClick={Logout} key="4" className="text-center" >sign out</Menu.Item>
   </Menu>
 );
 const HeaderOne = () => {

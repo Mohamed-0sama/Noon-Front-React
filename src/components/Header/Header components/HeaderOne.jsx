@@ -30,14 +30,14 @@ const menu = (
       <Link to="/User/profile" className="d-flex align-items-center"><UserOutlined className="me-2"/>profile</Link>
     </Menu.Item>
     <Menu.Divider className="text-center"/>
-    <Menu.Item key="4" className="text-center">sign out</Menu.Item>
+    <Menu.Item key="4" className="text-center" onClick={alert("Hello")}>sign out</Menu.Item>
   </Menu>
 );
 const HeaderOne = () => {
   let isLoggedIn = localStorage.getItem("isLoggedIn");
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
   let navigate = useNavigate();
-  const quantity = useSelector(state => state.cart.quantity)
+  const quantity = useSelector(state => state.cart.quant)
   const [search, setSearch] = useState("");
   const [searchOption, setSearchOption] = useState([]);
   const imagesUrl = process.env.REACT_APP_API_URL+"/images/";

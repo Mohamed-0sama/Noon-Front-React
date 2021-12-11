@@ -67,10 +67,9 @@ export default function CartItem(props) {
                                 1
                             </button> */}
               <p className="lead fw-bold">
-                {props.product.quantity} X{" "}
-                <span className="semi-hidden">EGP</span>
+                {props.product.quant} X <span className="semi-hidden">EGP</span>
                 {props.product.price} = <span className="semi-hidden">EGP</span>
-                {props.product.quantity * props.product.price}
+                {props.product.quant * props.product.price}
               </p>
               <button
                 className="btn btn-outline-dark me-4"

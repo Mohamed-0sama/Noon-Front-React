@@ -15,8 +15,9 @@ export default function ProductDetails() {
   const dispatch = useDispatch();
 
   const addCartProduct = (product) => {
-    product.quantity = quantityWanted;
-    dispatch(addItemCart(product));
+    // product.quantity = quantityWanted;
+    let cartItem = { ...product, quant: quantityWanted };
+    dispatch(addItemCart(cartItem));
     //dispatch(addCart(product));
   };
   const handleMinus = () => {

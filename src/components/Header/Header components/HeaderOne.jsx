@@ -16,7 +16,13 @@ import { Dropdown } from "antd";
 import { CaretDownOutlined, HomeOutlined, ShopOutlined } from "@ant-design/icons";
 import { UserOutlined } from '@ant-design/icons';
 //
+const Logout=()=>{
+  localStorage.removeItem("userToken");
+  localStorage.removeItem("userId");
+  localStorage.setItem("isLoggedIn","false");
+  // setLogout(false);
 
+}
 const menu = (
 
   <Menu style={{width: "150px", 
@@ -36,21 +42,15 @@ const menu = (
   </Menu>
 );
 const HeaderOne = () => {
-  let isLoggedIn = localStorage.getItem("isLoggedIn");
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // let isLoggedIn = localStorage.getItem("isLoggedIn");
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("isLoggedIn"));
   let navigate = useNavigate();
   const quantity = useSelector(state => state.cart.quant)
   const [search, setSearch] = useState("");
-  const [logout, setLogout] = useState(true);
+  // const [logout, setLogout] = useState(true);
   const [searchOption, setSearchOption] = useState([]);
   const imagesUrl = process.env.REACT_APP_API_URL+"/images/";
-  const Logout=()=>{
-    localStorage.removeItem("userToken");
-    localStorage.removeItem("userId");
-    localStorage.removeItem("isLoggedIn");
-    setLogout(false);
-  
-  }
+
   useEffect(() => {
     axios
       // .get("https://jsonplaceholder.typicode.com/posts?userId=" + search)

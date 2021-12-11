@@ -43,7 +43,7 @@ const Register = () => {
     };
 
     axios
-      .post("https://noon-ecommerce.herokuapp.com/api/auth/register", data)
+      .post(process.env.REACT_APP_API_URL + "/api/auth/register", data)
       .then((res) => {
         localStorage.setItem("userToken", res.data.accessToken);
         localStorage.setItem("userId", res.data._id);
@@ -62,7 +62,7 @@ const Register = () => {
     <div
       className="mydiv text-center"
       style={{
-        backgroundImage: `url("https://noon-ecommerce.herokuapp.com/images/backGround.svg")`,
+        backgroundImage: `url(process.env.REACT_APP_API_URL+"/images/backGround.svg")`,
       }}
     >
       <main className="form-auth">

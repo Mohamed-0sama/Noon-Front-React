@@ -113,7 +113,7 @@ const Login = () => {
     };
 
     axios
-      .post("https://noon-ecommerce.herokuapp.com/api/auth/login", data)
+      .post(process.env.REACT_APP_API_URL + "/api/auth/login", data)
 
       .then((res) => {
         console.log("tttttttttttttttt", res);
@@ -141,7 +141,7 @@ const Login = () => {
     <div
       className="mydiv text-center"
       style={{
-        backgroundImage: `url("https://noon-ecommerce.herokuapp.com/images/backGround.svg")`,
+        backgroundImage: `url(process.env.REACT_APP_API_URL+"/images/backGround.svg")`,
       }}
     >
       <main className="form-auth">

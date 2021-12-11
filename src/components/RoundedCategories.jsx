@@ -6,7 +6,7 @@ export default function RoundedCategories() {
     let componentMounted = true;
     useEffect(() => {
         const getProducts = async () => {
-            const response = await fetch("https://noon-ecommerce.herokuapp.com/api/products");
+            const response = await fetch(process.env.REACT_APP_API_URL+"/api/products");
             console.log()
             if (componentMounted) {
                 setData(await response.clone().json());

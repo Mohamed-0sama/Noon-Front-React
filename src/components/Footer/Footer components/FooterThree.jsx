@@ -1,7 +1,7 @@
 import React from 'react'
 
 const FooterThree = () => {
-  const imagesUrl = "https://noon-ecommerce.herokuapp.com/images/"
+  const imagesUrl = process.env.REACT_APP_API_URL+"/images/"
 
     return (
         <>

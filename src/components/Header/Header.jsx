@@ -96,7 +96,7 @@ const Header = ({ categories, loading}) => {
                     onMouseOut={mouseOut}
                   >
                     <Link
-                      className="nav-link"
+                      className="nav-link nav-cat"
                       to={`/category/${cat.mainCat}`}
                     >
                       {cat.mainCat}

@@ -13,7 +13,7 @@ const Layout = () => {
     setLoading(true);
     axios
       // .get("https://localhost:5000/api/categories")
-      .get("https://noon-ecommerce.herokuapp.com/api/categories")
+      .get(process.env.REACT_APP_API_URL+"/api/categories")
       .then(function (response) {
         setCategories(response.data);
         setCategoriesFooter(response.data.slice(0, 6))

@@ -45,7 +45,7 @@ const Address = () => {
       // .get(`http://localhost:5000/api/users/find/${userData._id}`)
       // .get(`http://localhost:5000/api/users/find/${userId}`)
       // .get(`https://noon-ecommerce.herokuapp.com/api/users/find/61965bc1d77aff0d40a1d006`,
-      .get(`https://noon-ecommerce.herokuapp.com/api/users/find/${userId}`,
+      .get(`${process.env.REACT_APP_API_URL}/api/users/find/${userId}`,
        {
         
         headers: {
@@ -72,7 +72,7 @@ const Address = () => {
   const onFinish = (values) => {
     console.log("Finish:", values);
     setLoading(true);
-    axios.put(`https://noon-ecommerce.herokuapp.com/api/users/edit/61965bc1d77aff0d40a1d006`, values)
+    axios.put(`${process.env.REACT_APP_API_URL}/api/users/edit/61965bc1d77aff0d40a1d006`, values)
     .then(() => {success()})
     .catch((err) =>{error(); setErrMsg(err.message)} )
     .finally(() => setLoading(false));

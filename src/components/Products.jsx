@@ -10,7 +10,7 @@ function Products() {
     useEffect(() => {
         const getProducts = async () => {
             setLoading(true);
-            const response = await fetch("https://noon-ecommerce.herokuapp.com/api/products");
+            const response = await fetch(process.env.REACT_APP_API_URL+"/api/products");
             if (componentMounted) {
                 setData(await response.clone().json());
                 setFilter(await response.json());
@@ -84,7 +84,7 @@ function Products() {
                         <>
                             <div className="col-md-3 mb-4">
                                 <div class="card h-100 text-center p-4" key={product.id} >
-                                    <img src={`https://noon-ecommerce.herokuapp.com/images/${product.imageSrc}`} class="card-img-top" alt={product.title} height="250px" />
+                                    <img src={`${process.env.REACT_APP_API_URL}/images/${product.imageSrc}`} class="card-img-top" alt={product.title} height="250px" />
                                     <div class="card-body">
                                         <h5 class="card-title mb-0">{product.title.substring(0, 12)}...</h5>
                                         <p class="card-text lead ">${product.price}</p>

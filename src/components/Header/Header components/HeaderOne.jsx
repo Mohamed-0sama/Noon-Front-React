@@ -40,12 +40,12 @@ const HeaderOne = () => {
   const quantity = useSelector(state => state.cart.quantity)
   const [search, setSearch] = useState("");
   const [searchOption, setSearchOption] = useState([]);
-  const imagesUrl = "https://noon-ecommerce.herokuapp.com/images/";
+  const imagesUrl = process.env.REACT_APP_API_URL+"/images/";
   useEffect(() => {
     axios
       // .get("https://jsonplaceholder.typicode.com/posts?userId=" + search)
       // http://localhost:5000/api/products?category=Mobiles
-      .get("https://noon-ecommerce.herokuapp.com/api/categories?subCat=" + search)
+      .get(process.env.REACT_APP_API_URL+"/api/categories?subCat=" + search)
       .then((post) => {
         console.log(post);
         console.log(search);

@@ -15,7 +15,7 @@ const Search = () => {
     const fetchProducts = async () => {
       setLoading(true);
       console.log("heloooooooo",searchParams.get("brand"));
-      const res = await axios.get(`https://noon-ecommerce.herokuapp.com/api/products?categories=${searchParams.get("category")?searchParams.get("category"):""}&subCat=${searchParams.get("subCat")?searchParams.get("subCat"):""}&brand=${searchParams.get("brand")?searchParams.get("brand"):""}`);
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/products?categories=${searchParams.get("category")?searchParams.get("category"):""}&subCat=${searchParams.get("subCat")?searchParams.get("subCat"):""}&brand=${searchParams.get("brand")?searchParams.get("brand"):""}`);
       setProducts(res.data);
       setLoading(false);
     };

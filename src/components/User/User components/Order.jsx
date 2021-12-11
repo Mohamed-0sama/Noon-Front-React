@@ -15,7 +15,7 @@ const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 //   message.error('sorry, there was a problem');
 // };
 const Order = () => {
-  const imagesUrl = "https://noon-ecommerce.herokuapp.com/images/";
+  const imagesUrl = process.env.REACT_APP_API_URL+"/images/";
   const [products, setProducts] = useState(() => []);
   const [order, setOrder] = useState(() => {});
   const [loading, setLoading] = useState(false);
@@ -32,7 +32,7 @@ const Order = () => {
     setLoading(true);
     axios
       // .get("https://noon-ecommerce.herokuapp.com/api/orders/find/61965b8bd77aff0d40a1d004", 
-         .get(`https://noon-ecommerce.herokuapp.com/api/orders/find/${userId}`,
+         .get(`${process.env.REACT_APP_API_URL}/api/orders/find/${userId}`,
        {
         
           headers: {
@@ -46,7 +46,7 @@ const Order = () => {
         setOrder(response.data[0]);
         const urls = response.data[0].products.map(
           (product) =>
-            `https://noon-ecommerce.herokuapp.com/api/products/find/${product.productId}`
+            `${process.env.REACT_APP_API_URL}/api/products/find/${product.productId}`
         );
         console.log(urls);
         const promises = urls.map((url) =>
@@ -86,7 +86,7 @@ const Order = () => {
  
   const cancel = () => {
     axios
-          .delete(`https://noon-ecommerce.herokuapp.com/api/orders/find/${order._id}`) //we need to delete product from order contain more than one product 
+          .delete(`${process.env.REACT_APP_API_URL}/api/orders/find/${order._id}`) //we need to delete product from order contain more than one product 
           // .delete(`http://localhost:5000/api/order/find/${order._id}`) //we need to delete product from order contain more than one product 
           .then(() => {
             setSuccessMsg("Deleted successfully");

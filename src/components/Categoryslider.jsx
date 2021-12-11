@@ -11,7 +11,7 @@ const Categoryslider = ({ catName }) => {
     const [filter, setFilter] = useState(data)
     const [loading, setLoading] = useState(false)
     const [componentMounted, setcomponentMounted] = useState(true)
-    const ImageUrl = "https://noon-ecommerce.herokuapp.com/images/"
+    const ImageUrl = process.env.REACT_APP_API_URL+"/images/"
 
     let navigate = useNavigate()
     const goToProductDetails = (productId) => {
@@ -24,7 +24,7 @@ const Categoryslider = ({ catName }) => {
     useEffect(() => {
         const getProducts = async () => {
             setLoading(true);
-            const response = await fetch(`https://noon-ecommerce.herokuapp.com/api/products?categories=${catName}`);
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products?categories=${catName}`);
             //console.log("Category props", catName)
             //console.log(response.clone().json())
             if (componentMounted) {

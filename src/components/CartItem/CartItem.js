@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function CartItem(props) {
-  const ImageUrl = "https://noon-ecommerce.herokuapp.com/images/";
+  const ImageUrl = process.env.REACT_APP_API_URL + "/images/";
 
   return (
     <>

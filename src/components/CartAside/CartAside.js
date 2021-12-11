@@ -32,7 +32,7 @@ export default function CartAside(props) {
     else {
       navigate(`/checkout/${props.total}`);
       await axios
-        .post("https://noon-ecommerce.herokuapp.com/api/orders", order, config)
+        .post(process.env.REACT_APP_API_URL + "/api/orders", order, config)
         .then(function (response) {
           // handle success
           console.log(response);

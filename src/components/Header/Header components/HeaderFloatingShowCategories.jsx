@@ -4,7 +4,7 @@ import {  xContext, mouseOverContext, mouseOutContext } from '../Header';
 
     
 const HeaderFloatingShowCategories = ({ categories, elemRef_show__categories}) => {
-  const imagesUrl = "https://noon-ecommerce.herokuapp.com/images/"
+  const imagesUrl = process.env.REACT_APP_API_URL+"/images/"
 
   // const [mouseOverCategoryID, setMouseOverCategoryID] = useState(1);
     const x = useContext(xContext)

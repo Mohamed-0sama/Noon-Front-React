@@ -103,77 +103,39 @@ const Profile = () => {
           form={form}
           layout="vertical"
           // layout="inline"
-          initialValues={{...userInfo, lastname: "Nasr", password : "01006150263"}}
-          // initialValues={{username : userInfo.username, password : "01006150263"}}
+          // initialValues={{...userInfo, password : ""}}
+          // initialValues={{...userInfo}}
+          initialValues={{...userInfo, password : "01006150263"}}
           name="horizontal_login"
           onFinish={onFinish}
         >
           <div className="row">
             <div className="col-md-6 col-12 my-2">
-              <Form.Item
+            <Form.Item
                 name="username"
-                label="First Name"
+                label="username"
                 // className="col-md-6 mx-0"
                 rules={[
                   {
-                    required: true,
-                    message: "Please input your firsr name!",
+                    required: false,
+                    message: "Please input your username!",
                   },
                 ]}
               >
                 <Input
                   prefix={<UserOutlined className="site-form-item-icon" />}
-                  placeholder="firsrName"
-                />
-              </Form.Item>
-            </div>
-            <div className="col-md-6 col-12 my-2">
-              <Form.Item
-                name="lastname"
-                label="Last Name"
-                // className="col-md-6 mx-0"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your last name!",
-                  },
-                ]}
-              >
-                <Input
-                  prefix={<UserOutlined className="site-form-item-icon" />}
-                  placeholder="lastName"
-                />
-              </Form.Item>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-6 col-12 my-2">
-              <Form.Item
-                name="email"
-                label="Email"
-                // className="col-md-6 mx-0"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your email!",
-                  },
-                ]}
-              >
-                <Input
-                  prefix={<MailOutlined className="site-form-item-icon" />}
-                  placeholder="Email"
-                  type="email"
+                  placeholder="username"
                 />
               </Form.Item>
             </div>
             <div className="col-md-6 col-12 my-2">
               <Form.Item
                 name="password"
-                label="Password"
+                label="New Password"
                 // className="col-md-6 mx-0"
                 rules={[
                   {
-                    required: true,
+                    required: false,
                     message: "Please input your password!",
                   },
                 ]}
@@ -186,9 +148,29 @@ const Profile = () => {
               </Form.Item>
             </div>
           </div>
-          <div className="col-12 d-flex justify-content-end">
+          <div className="row">
+            <div className="col-md-6 col-12 my-2">
+              <Form.Item
+                name="email"
+                label="Email"
+                // className="col-md-6 mx-0"
+                rules={[
+                  {
+                    required: false,
+                    message: "Please input your email!",
+                  },
+                ]}
+              >
+                <Input
+                  prefix={<MailOutlined className="site-form-item-icon" />}
+                  placeholder="Email"
+                  type="email"
+                />
+              </Form.Item>
+            </div>
+            <div className="col-md-6 col-12 d-flex justify-content-end">
             {/* button__firstDiv */}
-            <Form.Item shouldUpdate className="">
+            <Form.Item shouldUpdate className="mt-4">
            
               {() => (
                  <Tooltip title="Must change all fields to enable this button" color={"#2db7f5"} key={"#2db7f5"}>
@@ -196,7 +178,7 @@ const Profile = () => {
                   type="primary"
                   htmlType="submit"
                   disabled={
-                    !form.isFieldsTouched(true) ||
+                    
                     !!form
                       .getFieldsError()
                       .filter(({ errors }) => errors.length).length
@@ -209,6 +191,9 @@ const Profile = () => {
              
             </Form.Item>
           </div>
+          </div>
+
+
         </Form>
         {/* <form className="needs-validation" novalidate>
           <div className="row g-3">

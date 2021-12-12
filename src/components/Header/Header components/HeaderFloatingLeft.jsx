@@ -16,13 +16,13 @@ const HeaderFloatingLeft = ({ categories }) => {
     return (
       <>
         <div className="dropdown dropdown_ALLCATEGORIES d-none d-lg-block">
-          <a
+          <Link
             className="btn dropdown-toggle a_cat"
             id="dropdownMenuLink"
-            href="https://ant.design/components/dropdown"
+            to="/search"
           >
             ALL CATEGORIES
-          </a>
+          </Link>
 
           <ul className="dropdown-menu " aria-labelledby="dropdownMenuLink">
          
@@ -90,13 +90,13 @@ const HeaderFloatingLeft = ({ categories }) => {
   return (
     <>
       <div className="dropdown dropdown_ALLCATEGORIES d-none d-lg-block">
-        <a
-          className="btn dropdown-toggle a_cat"
-          id="dropdownMenuLink"
-          href="https://ant.design/components/dropdown"
-        >
-          ALL CATEGORIES
-        </a>
+      <Link
+            className="btn dropdown-toggle a_cat"
+            id="dropdownMenuLink"
+            to="/search"
+          >
+            ALL CATEGORIES
+          </Link>
 
         <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
           {categories.map((cat) => {

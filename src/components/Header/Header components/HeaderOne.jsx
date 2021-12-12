@@ -20,6 +20,7 @@ import { UserOutlined } from '@ant-design/icons';
 const HeaderOne = () => {
   // let isLoggedIn = localStorage.getItem("isLoggedIn");
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("isLoggedIn"));
+  const [userName, setUsername] = useState(localStorage.getItem("username"));
   let navigate = useNavigate();
   const quantity = useSelector(state => state.cart.quant)
   const [search, setSearch] = useState("");
@@ -88,16 +89,16 @@ const HeaderOne = () => {
       first__navbar"
       >
         <div className="container-fluid">
-          <a
+          <Link
             className="navbar-brand d-block d-sm-none"
-            href="https://ant.design/components/dropdown"
+            to="/"
           >
             <img
               src={imagesUrl + "noon-black-en.svg"}
               // src="images/header/noon-black-en.svg"
               alt="noon"
             />
-          </a>
+          </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -114,9 +115,9 @@ const HeaderOne = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <a
+                <Link
                   className="nav-link d-flex"
-                  href="https://ant.design/components/dropdown"
+                  to="/"
                 >
                   <div className="egyptFlag mx-2 d-flex d-none d-md-block">
                     <img
@@ -127,16 +128,16 @@ const HeaderOne = () => {
                   </div>
                   <div>
                     <div className="Deliver">
-                      <span>Deliver to</span>
-                      <img
+                      <span>Noon</span>
+                      {/* <img
                         src={imagesUrl + "dropdownArrow.svg"}
                         // src="images/header/dropdownArrow.svg"
                         alt="dropdownArrow"
-                      />
+                      /> */}
                     </div>
-                    <span>Cairo</span>
+                    <span>Egypt</span>
                   </div>
-                </a>
+                </Link>
               </li>
 
               <li className="header__li__search">
@@ -168,12 +169,12 @@ const HeaderOne = () => {
                 {/* <Complete /> */}
               </li>
               <li className="nav-item language">
-                <a
+                <Link
                   className="nav-link"
-                  href="https://ant.design/components/dropdown"
+                  to="/"
                 >
                   <span>العربية</span>
-                </a>
+                </Link>
               </li>
               <li className="nav-item sign-in">
                 <Link
@@ -195,11 +196,12 @@ const HeaderOne = () => {
                   <Link
                     to="/User"
                     className={
-                      "ant-dropdown-link mx-2 d-flex align-items-center " + (isLoggedIn=="true" ? "d-block" : "d-none")
+                      "ant-dropdown-link mx-2 d-flex align-items-center text-center fw-bold " + (isLoggedIn=="true" ? "d-block" : "d-none")
                     }
                     onClick={(e) => e.preventDefault()}
                   >
-                    My Account <CaretDownOutlined className="ms-2"/>
+                    Ahlan {userName} <br />My Account
+                     <CaretDownOutlined className="ms-2"/>
                   </Link>
                 </Dropdown>
                

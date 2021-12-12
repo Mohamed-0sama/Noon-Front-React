@@ -45,11 +45,12 @@ const Register = () => {
     axios
       .post(process.env.REACT_APP_API_URL + "/api/auth/register", data)
       .then((res) => {
-        localStorage.setItem("userToken", res.data.accessToken);
-        localStorage.setItem("userId", res.data._id);
-        localStorage.setItem("isLoggedIn", "true");
+        // localStorage.setItem("userToken", res.data.accessToken);
+        // localStorage.setItem("userId", res.data._id);
+        // navigate("/", { replace: true });
+        localStorage.setItem("isLoggedIn", "false");
+        navigate("/login", { replace: true });
         // axios.defaults.headers.common = { Authorization: res.accessToken };
-        navigate("/", { replace: true });
       })
       .catch((err) => {
         console.log(err);

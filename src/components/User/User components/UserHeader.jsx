@@ -53,16 +53,16 @@ const UserHeader = () => {
     "
       >
         <div className="container-fluid">
-          <a
+          <Link
             className="navbar-brand d-block d-sm-none"
-            href="https://ant.design/components/dropdown"
+            to="/"
           >
             <img
               src={imagesUrl + "noon-black-en.svg"}
               // src="images/header/noon-black-en.svg"
               alt="noon"
             />
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -78,14 +78,14 @@ const UserHeader = () => {
             {/* id="navbarSupportedContent" */}
             <ul className="navbar-nav me-auto">
               <li className="nav-item">
-                <a
+                <Link
                   className="nav-link active"
                   aria-current="page"
-                  href="https://ant.design/components/dropdown"
+                  to="/"
                 >
                   <img src={imagesUrl + "noon-black-en.svg"} alt="noon" />
                   {/* <img src="images/header/noon-black-en.svg" alt="noon" /> */}
-                </a>
+                </Link>
               </li>
 
               <li className="header__li__search">
@@ -124,12 +124,12 @@ const UserHeader = () => {
                 {/* <Complete /> */}
               </li>
               <li className="nav-item language">
-                <a              
+                <Link              
                   className="nav-link mx-2"
-                  href="https://ant.design/components/dropdown"
+                  to="/"
                 >
                   <span>العربية</span>
-                </a>
+                </Link>
               </li>
               <li className="nav-item sign-in">
                 <Link className="nav-link" to="/">

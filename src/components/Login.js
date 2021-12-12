@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+// import Alert from "react-bootstrap/Alert";
+import { Alert } from "antd";
 
 import axios from "axios";
 import "./Login.css";
@@ -81,6 +83,7 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  // const [isHidden, setIsHidden] = useState("");
 
   useEffect(() => {
     if (localStorage.getItem("userToken")) {
@@ -119,6 +122,7 @@ const Login = () => {
         console.log("tttttttttttttttt", res);
         localStorage.setItem("userToken", res.data.accessToken);
         localStorage.setItem("userId", res.data._id);
+        localStorage.setItem("username", res.data.username);
         localStorage.setItem("isLoggedIn", "true");
 
         // axios.defaults.headers.common = { Authorization: res.data.accessToken };
@@ -128,14 +132,24 @@ const Login = () => {
 
       .catch((err) => {
         console.log("errrrrrrrrrr", err);
-        // this.setState({
-        //   error: err.response.data.message,
-        // });
+        setError("Wrong Credentials!");
       });
   };
 
   const renderError = () => {
-    return error ? <blockquote>{error}</blockquote> : "";
+    // return error ? <blockquote>{error}</blockquote> : "";
+    return error ? (
+      <Alert
+        className="fw-bold text-danger"
+        message="Wrong Credentials!"
+        description="wrong username or password"
+        type="error"
+        closable
+        showIcon
+      />
+    ) : (
+      ""
+    );
   };
   return (
     <div
@@ -145,7 +159,6 @@ const Login = () => {
       }}
     >
       <main className="form-auth">
-        {renderError()}
         <form onSubmit={onSubmit}>
           <img
             className="mb-5"
@@ -187,7 +200,7 @@ const Login = () => {
               Password
             </label>
           </div>
-
+          {renderError()}
           <p>
             <a href="./reset.html" className="text-decoration-none">
               Forgot your password?{" "}

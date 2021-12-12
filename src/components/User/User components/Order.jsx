@@ -28,19 +28,17 @@ const Order = () => {
   // const userId = localStorage.getItem("userId")
 
   useEffect(() => {
-    const userId = localStorage.getItem("userId")
+    const userId = localStorage.getItem("userId");
+    const config = {
+      //change token with userToken
+      headers: {
+        token: localStorage.getItem("userToken"),
+      },
+    };
     setLoading(true);
     axios
       // .get("https://noon-ecommerce.herokuapp.com/api/orders/find/61965b8bd77aff0d40a1d004", 
-         .get(`${process.env.REACT_APP_API_URL}/api/orders/find/${userId}`,
-       {
-        
-          headers: {
-            'token': localStorage.getItem('userToken')
-          }
-        
-        // token : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOTQ1NGNkYzI0MGFhNzlkNDYxMGViNiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzOTA3MjM0MCwiZXhwIjoxNjM5MzMxNTQwfQ.tfOeCrY3HjvmFwMqmF3t-ImY35Of75sx6bD-psAgabc"
-      })
+         .get(`${process.env.REACT_APP_API_URL}/api/orders/find/${userId}`,config)
       // .get("http://localhost:5000/api/orders/find/61965b8bd77aff0d40a1d004")
       .then(function (response) {
         setOrder(response.data[0]);
@@ -83,21 +81,46 @@ const Order = () => {
   //       });
   //   }
   // };
+  const cancel = (prdId) => {
+    const userId = localStorage.getItem("userId");
+    const config = {
+      //change token with userToken
+      headers: {
+        token: localStorage.getItem("userToken"),
+      },
+    };
+
+    const ff = order.products.filter((prd)=>{ // return all product except that id
  
-  const cancel = () => {
-    axios
-          .delete(`${process.env.REACT_APP_API_URL}/api/orders/find/${order._id}`) //we need to delete product from order contain more than one product 
-          // .delete(`http://localhost:5000/api/order/find/${order._id}`) //we need to delete product from order contain more than one product 
-          .then(() => {
-            setSuccessMsg("Deleted successfully");
-            setErrMsg("");
-          })
-          .catch((err) => {
-            setErrMsg(err.message);
-            setSuccessMsg("");
-          }).finally(() => setLoading(false));
+                return prd.productId !== prdId
+ 
+               })
+ 
+               console.log("hhhhhhhhhhh",ff);
+ 
+              
+ 
+     axios.put(`${process.env.REACT_APP_API_URL}/api/orders/edit/${order._id}`,{userId:userId,products : ff},config) //we need to delete product from order contain more than one product
+ 
+           .then(() => {
+ 
+             setSuccessMsg("Deleted successfully");
+ 
+             setErrMsg("");
+ 
+           })
+ 
+           .catch((err) => {
+ 
+             setErrMsg(err.message);
+ 
+             setSuccessMsg("");
+ 
+           }).finally(() => setLoading(false));
+ 
       
-  };
+ 
+   };
   if (loading) {
     return <Spin indicator={antIcon} />;
     // return "loading...";
@@ -167,7 +190,7 @@ const Order = () => {
                 {order.status === "delievered" ? (
                   <RatingProduct />
                 ) : (
-                  <Button onClick={cancel()} size={"large"}>
+                  <Button onClick={()=>cancel(product._id)} size={"large"}>
                     cancel
                   </Button>
                 )}             

@@ -16,31 +16,7 @@ import { Dropdown } from "antd";
 import { CaretDownOutlined, HomeOutlined, ShopOutlined } from "@ant-design/icons";
 import { UserOutlined } from '@ant-design/icons';
 //
-const Logout=()=>{
-  localStorage.removeItem("userToken");
-  localStorage.removeItem("userId");
-  localStorage.setItem("isLoggedIn","false");
-  // setLogout(false);
 
-}
-const menu = (
-
-  <Menu style={{width: "150px", 
-  position: "relative", top: "10px", right: "50px"
-  }}>
-    <Menu.Item key="0" className="">
-      <Link to="/User/order" className="d-flex align-items-center"><ShopOutlined className="me-2"/> order </Link>
-    </Menu.Item>
-    <Menu.Item key="1">
-      <Link to="/User/address" className="d-flex align-items-center"><HomeOutlined className="me-2"/>Address</Link>
-    </Menu.Item>
-    <Menu.Item key="2">
-      <Link to="/User/profile" className="d-flex align-items-center"><UserOutlined className="me-2"/>profile</Link>
-    </Menu.Item>
-    <Menu.Divider className="text-center"/>
-    <Menu.Item onClick={Logout} key="4" className="text-center" >sign out</Menu.Item>
-  </Menu>
-);
 const HeaderOne = () => {
   // let isLoggedIn = localStorage.getItem("isLoggedIn");
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("isLoggedIn"));
@@ -51,6 +27,35 @@ const HeaderOne = () => {
   const [searchOption, setSearchOption] = useState([]);
   const imagesUrl = process.env.REACT_APP_API_URL+"/images/";
 
+  
+  const Logout=()=>{
+    localStorage.removeItem("userToken");
+    localStorage.removeItem("userId");
+    localStorage.setItem("isLoggedIn","false");
+    setIsLoggedIn("false");
+    // setLogout(false);
+  
+  }
+  const menu = (
+  
+    <Menu style={{width: "150px", 
+    position: "relative", top: "10px", right: "50px"
+    }}>
+      <Menu.Item key="0" className="">
+        <Link to="/User/order" className="d-flex align-items-center"><ShopOutlined className="me-2"/> order </Link>
+      </Menu.Item>
+      <Menu.Item key="1">
+        <Link to="/User/address" className="d-flex align-items-center"><HomeOutlined className="me-2"/>Address</Link>
+      </Menu.Item>
+      <Menu.Item key="2">
+        <Link to="/User/profile" className="d-flex align-items-center"><UserOutlined className="me-2"/>profile</Link>
+      </Menu.Item>
+      <Menu.Divider className="text-center"/>
+      <Menu.Item onClick={Logout} key="4" className="text-center" >sign out</Menu.Item>
+    </Menu>
+  );
+  
+  
   useEffect(() => {
     axios
       // .get("https://jsonplaceholder.typicode.com/posts?userId=" + search)

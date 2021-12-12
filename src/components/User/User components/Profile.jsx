@@ -60,9 +60,16 @@ const Profile = () => {
   }, []);
 
   const onFinish = (values) => {
+    const userId = localStorage.getItem("userId");
+    const config = {
+      //change token with userToken
+      headers: {
+        token: localStorage.getItem("userToken"),
+      },
+    };
     console.log("Finish:", values);
     setLoading(true);
-    axios.put(`${process.env.REACT_APP_API_URL}/api/users/edit/61965bc1d77aff0d40a1d006`, values)
+    axios.put(`${process.env.REACT_APP_API_URL}/api/users/edit/${userId}`, values,config)
     .then(() => {success()})
     .catch((err) =>{error(); setErrMsg(err.message)} )
     .finally(() => setLoading(false));

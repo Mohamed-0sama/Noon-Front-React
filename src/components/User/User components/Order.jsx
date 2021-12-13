@@ -42,6 +42,7 @@ const Order = () => {
       // .get("http://localhost:5000/api/orders/find/61965b8bd77aff0d40a1d004")
       .then(function (response) {
         setOrder(response.data[0]);
+        console.log("zzzzzzzzzzz",order);
         const urls = response.data[0].products.map(
           (product) =>
             `${process.env.REACT_APP_API_URL}/api/products/find/${product.productId}`
@@ -125,6 +126,7 @@ const Order = () => {
     return <Spin indicator={antIcon} />;
     // return "loading...";
   }
+  
   return (
     <div>
       {/* {successMsg && <Alert message={successMsg} type="success" closable />} */}

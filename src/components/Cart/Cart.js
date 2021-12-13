@@ -6,6 +6,7 @@ import CartItem from "../CartItem/CartItem";
 import CartAside from "../CartAside/CartAside";
 import { addProduct, delProduct } from "../../redux/LAMA/cartRedux";
 import "./Cart.css";
+import Paypal from "./../Paypal";
 
 const Cart = () => {
   //const state = useSelector((state) => state.handleCart)
@@ -117,6 +118,7 @@ const Cart = () => {
     <>
       {state.length === 0 && emptyCart()}
       {state.length !== 0 && showCartItem()}
+      {/* {state.length !== 0 && flag && <Paypal total="555" />} */}
     </>
   );
 };

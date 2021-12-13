@@ -1,12 +1,19 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { ResetCart } from "../../redux/LAMA/cartRedux";
-import axios from "axios";
+import { useState } from "react";
+import Paypal from "./../Paypal";
 export default function CartAside(props) {
+  const [city, setCity] = useState("");
+  const [addressDetails, setAddressDetails] = useState("");
+  const [checkout, setCheckOut] = useState(false);
   const state_products = useSelector((state) => state.cart.products);
   const api_products = state_products.map((p) => {
-    return { productId: p._id, quantity: p.quant };
+    return {
+      productId: p._id,
+      quantity: p.quant,
+      updatedQuantity: p.quantity - p.quant,
+    };
   });
   //console.log(api_products);
   const navigate = useNavigate();
@@ -16,34 +23,29 @@ export default function CartAside(props) {
     userId: userId, //localStorage.getItem
     products: api_products,
     amount: props.total,
-    address: { city: "alex", street: "gamal nasser" },
-    status: "pending",
+    address: { city, addressDetails },
+    status: "Pending",
   };
-  const config = {
-    //change token with userToken
-    headers: {
-      token: localStorage.getItem("userToken"),
-    },
-  };
+
   //console.log(order);
-  const dispatch = useDispatch();
+
   const handleCheckOut = async () => {
     if (userId === null) navigate("/Login");
     else {
-      navigate(`/checkout/${props.total}`);
-      await axios
-        .post(process.env.REACT_APP_API_URL + "/api/orders", order, config)
-        .then(function (response) {
-          // handle success
-          console.log(response);
-        })
-        .catch(function (error) {
-          // handle error
-          console.log(error);
-        });
-      dispatch(ResetCart());
+      setCheckOut(true);
+      // navigate(`/checkout/${props.total}`);
+      // await axios
+      //   .post(process.env.REACT_APP_API_URL + "/api/orders", order, config)
+      //   .then(function (response) {
+      //     // handle success
+      //     console.log(response);
+      //   })
+      //   .catch(function (error) {
+      //     // handle error
+      //     console.log(error);
+      //   });
+      // dispatch(ResetCart());
     }
-    //console.log("gowa reset")
   };
   return (
     <>
@@ -53,7 +55,7 @@ export default function CartAside(props) {
           style={{ border: "solid 0.5px lightgray" }}
         >
           <h5 className="p-2fw-bold">Order Summary</h5>
-          <div className="input-group ">
+          {/* <div className="input-group ">
             <input
               type="text"
               className="form-control p-2"
@@ -68,7 +70,7 @@ export default function CartAside(props) {
             >
               apply
             </button>
-          </div>
+          </div> */}
           <div className="row justify-content-between">
             <dt className="col-8 text-capitalize text-secondary">
               subtotal
@@ -80,7 +82,6 @@ export default function CartAside(props) {
             </dt>
             <dd className="col-4 "> {props.total}</dd>
           </div>
-
           <div className="row justify-content-between ">
             <dt className="col-8 text-capitalize text-secondary"> shipping</dt>
             <dd className="col-4  fw-bold text-primary text-capitalize float-end">
@@ -116,17 +117,54 @@ export default function CartAside(props) {
               </p>
             </div>
           </div>
+
+          {/* <div className="row p-4"> */}
+          <h5 className="p-2fw-bold">Address Details</h5>
+          <div className="col-2 input-group ">
+            <input
+              type="text"
+              className="form-control p-2"
+              placeholder="City"
+              aria-label="Recipient's username"
+              aria-describedby="button-addon2"
+              onChange={(e) => setCity(e.target.value)}
+            />
+          </div>
+          <div className="col-2  input-group my-4">
+            <textarea
+              name=""
+              className="form-control p-2"
+              id=""
+              cols="30"
+              rows="2"
+              placeholder="Enter your address details"
+              onChange={(e) => setAddressDetails(e.target.value)}
+            ></textarea>
+            {/* type="text"
+                className="form-control p-2"
+                
+                aria-label="Recipient's username"
+                aria-describedby="button-addon2"
+              /> */}
+          </div>
+          {/* <Paypal total="22" /> */}
+
           <div className="row text-center p-4">
-            <button
-              className="btn btn-primary text-white text-uppercase"
-              style={{ width: "100%" }}
-              onClick={handleCheckOut}
-            >
-              Checkout
-            </button>
+            {checkout ? (
+              <Paypal order={order} />
+            ) : (
+              <button
+                disabled={city == "" || addressDetails == ""}
+                className="btn btn-primary text-white text-uppercase"
+                style={{ width: "100%" }}
+                onClick={handleCheckOut}
+              >
+                Checkout
+              </button>
+            )}
           </div>
         </div>
-        <div className="row justify-content-center">
+        {/* <div className="row justify-content-center">
           <p
             className="fw-bold "
             style={{ color: "limegreen ;font-size: 15px" }}
@@ -146,7 +184,7 @@ export default function CartAside(props) {
               alt=""
             />
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

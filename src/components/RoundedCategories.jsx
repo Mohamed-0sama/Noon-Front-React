@@ -1,12 +1,12 @@
-import React ,{ useState, useEffect }from 'react'
-import { Container,Row } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react'
+import { Row, Col, Image } from 'react-bootstrap';
 export default function RoundedCategories() {
     const [data, setData] = useState([]);
     const [filter, setFilter] = useState(data)
     let componentMounted = true;
     useEffect(() => {
         const getProducts = async () => {
-            const response = await fetch(process.env.REACT_APP_API_URL+"/api/products");
+            const response = await fetch(process.env.REACT_APP_API_URL + "/api/products");
             console.log()
             if (componentMounted) {
                 setData(await response.clone().json());
@@ -24,39 +24,41 @@ export default function RoundedCategories() {
         const updatedList = data.filter((x) => x.category === cat);
         setFilter(updatedList);
     }
-return (
+    return (
+        <>
+            <div class='container p-5'>
+                <Row >
 
-    <Container >
-    <Row className=" p-5 bg-white">
-<div className="buttons justify-content-center d-flex m-1 -3" >
+                    <Col style={{ cursor: 'pointer' }} >
+                        <Image type="image" src="https://k.nooncdn.com/cms/pages/20211212/aed3041d6c2cfd025c9c3191e76ac81f/en_cb-11.png" /></Col>
 
-                    <input onClick={() => filterProduct("men's clothing")}
-                        type="image" src="https://k.nooncdn.com/cms/pages/20211130/76d18741396e9239cdab40c73845efb5/en_mb-circle-24.png"
-                        alt="All"
-                         />
+                    <Col style={{ cursor: 'pointer' }}>
+                        <Image type="image" src="https://k.nooncdn.com/cms/pages/20211212/aed3041d6c2cfd025c9c3191e76ac81f/en_cb-07.png" /></Col>
 
-                    <input onClick={() => filterProduct("men's clothing")}
-                        type="image" src="https://k.nooncdn.com/cms/pages/20211130/76d18741396e9239cdab40c73845efb5/en_mb-circle-01.png"
-                        alt="Men's" 
-                         />
+                    <Col style={{ cursor: 'pointer' }}>
+                        <Image type="image" src="https://k.nooncdn.com/cms/pages/20211212/aed3041d6c2cfd025c9c3191e76ac81f/en_cb-06.png" /></Col>
 
-                    <input onClick={() => filterProduct("women's clothing")}
-                        type="image" src="https://k.nooncdn.com/cms/pages/20211130/76d18741396e9239cdab40c73845efb5/en_mb-circle-02.png"
-                        alt="Women's" 
-                         />
 
-                    <input onClick={() => filterProduct("electronics")}
-                        type="image" src="https://k.nooncdn.com/cms/pages/20211130/76d18741396e9239cdab40c73845efb5/en_mb-circle-14.png"
-                        alt="Electronics" 
-                         />
+                    <Col style={{ cursor: 'pointer' }}>
+                        <Image type="image" src="https://k.nooncdn.com/cms/pages/20211212/aed3041d6c2cfd025c9c3191e76ac81f/en_cb-09.png" /></Col>
 
-                    <input onClick={() => filterProduct("jewelery")}
-                        type="image" src="https://k.nooncdn.com/cms/pages/20211130/76d18741396e9239cdab40c73845efb5/en_mb-circle-25.png"
-                        alt="jewelery"
-                          />
-                </div>
-            </Row>
-                </Container>
 
-                );
+                    <Col style={{ cursor: 'pointer' }}>
+                        <Image type="image" src="https://k.nooncdn.com/cms/pages/20211212/aed3041d6c2cfd025c9c3191e76ac81f/en_cb-03.png" /></Col>
+
+                    <Col style={{ cursor: 'pointer' }}>
+                        <Image type="image" src="https://k.nooncdn.com/cms/pages/20211212/aed3041d6c2cfd025c9c3191e76ac81f/en_cb-08.png" /></Col>
+
+                    <Col style={{ cursor: 'pointer' }}>
+                        <Image type="image" src="https://k.nooncdn.com/cms/pages/20211212/aed3041d6c2cfd025c9c3191e76ac81f/en_cb-10.png" /></Col>
+
+                    {/* <input width="150px" onClick={() => filterProduct("Baby")}
+                    type="image" src="https://k.nooncdn.com/cms/pages/20211212/aed3041d6c2cfd025c9c3191e76ac81f/en_cb-05.png"
+                    alt="jewelery"
+                    className="col img img-responsive m-1"
+                /> */}
+                </Row>
+            </div>
+        </>
+    );
 };

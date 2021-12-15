@@ -35,6 +35,7 @@ export default function ProductDetails() {
     }*/
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const getProductbyId = async () => {
       //setLoading(true);
       await axios
@@ -252,7 +253,7 @@ export default function ProductDetails() {
                                         How are these calculated <i className="bi bi-question-circle"></i>
                                     </span>
                                 </p> */}
-                <Rating></Rating>
+                <Rating className="text-center" prdId={product._id}></Rating>
               </div>
             </div>
             <br />

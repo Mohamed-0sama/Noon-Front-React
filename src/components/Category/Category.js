@@ -1,5 +1,6 @@
-import Categoryslider from "../Categoryslider";
 import { useParams } from "react-router-dom";
+import NewCategorySlider from "../NewCategorySlider";
+import { Link } from "react-router-dom";
 function Category() {
   let { selectedCat } = useParams();
   console.log("ff", selectedCat);
@@ -8,18 +9,18 @@ function Category() {
   return (
     <div className="container-fluid">
       <div className="row">
-        <a href="/#">
+        <Link to={`/search?category=${selected_category}`}>
           <img
             src={`${process.env.PUBLIC_URL}/assets/zaytoun/Categories/${selected_category}/1.png`}
             alt="Alt_Text"
             width="100%"
             height="100%"
           />
-        </a>
+        </Link>
       </div>
 
       <div className="row mt-5 ">
-        <Categoryslider catName={selectedCat} />
+        <NewCategorySlider catName={selectedCat} />
         {/* <h1>Rmadan block</h1> */}
       </div>
 
@@ -169,7 +170,7 @@ function Category() {
 
       <div className="row mt-5">
         <div className="row mt-5 ">
-          <Categoryslider catName={selectedCat} />
+          {/* <NewCategorySlider catName={selectedCat} /> */}
           {/* <h1>Rmadan block</h1> */}
         </div>
         {/* <h1>Rmadan block</h1> */}

@@ -28,7 +28,7 @@ const Layout = () => {
   return (
     <div>
       <Header categories={categories} loading={loading}/> 
-      <Outlet />
+      <Outlet  />
       <Footer categories={categoriesFooter}  loading={loading}/>
     </div>
   );

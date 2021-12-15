@@ -2,20 +2,34 @@ import React, { useState, useEffect } from 'react'
 import Skeleton from 'react-loading-skeleton'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
-import {Col,Container} from 'react-bootstrap'
-const NewCategorySlider = ({catName}) => {
+import { useNavigate } from "react-router-dom";
+import { useSearchParams } from 'react-router-dom';
+import { Row } from 'react-bootstrap'
+const NewCategorySlider = ({ catName }) => {
+    let navigate = useNavigate()
+    const goToProductDetails = (productId) => {
+        navigate(`/productDetails/${productId}`)
+
+    }
+
+    const goToCategory = () => {
+        navigate(`/category/${catName}`)
+    }
+
+
+    const load = [1, 2, 3, 4, 5, 6, 7]
     const [data, setData] = useState([]);
     const [filter, setFilter] = useState(data)
     const [loading, setLoading] = useState(false)
     const [componentMounted, setcomponentMounted] = useState(true)
+    const ImageUrl = process.env.REACT_APP_API_URL + "/images/"
     // let componentMounted = true;
     useEffect(() => {
         const getProducts = async () => {
             setLoading(true);
-            const response = await fetch(`https://fakestoreapi.com/products`);
-            console.log("Category props",catName)
+            // const response = await fetch(`https://fakestoreapi.com/products`);
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products?categories=${catName?catName:""}`);
+            console.log("Category props", catName)
             if (componentMounted) {
                 setData(await response.clone().json());
                 setFilter(await response.json());
@@ -27,106 +41,109 @@ const NewCategorySlider = ({catName}) => {
             }
         }
 
-       
+
+
+
         getProducts();
-    },[])
+    }, [catName])
 
     const Loading = () => {
         return (
             <>
-                <div className="col-md-3">
-                    <Skeleton height={350} />
-                </div>
-                <div className="col-md-3">
-                    <Skeleton height={350} />
-                </div>
-                <div className="col-md-3">
-                    <Skeleton height={350} />
-                </div>
-                <div className="col-md-3">
-                    <Skeleton height={350} />
-                </div>
+                {
+
+                    load.map((loaded) => {
+                        return (
+                            <div class="card col-1 m-1" style={{ height: '250px', width: '180px' }} aria-hidden="true" >
+                                <img src="https://z.nooncdn.com/s/app/com/noon/images/_loaders/noon-loader.gif" class=" w-auto" alt="..." />
+
+                            </div>
+                        )
+                    }
+                    )
+
+                }
+
             </>
         );
     };
 
     const ShowProducts = () => {
         return (
-                
-                <Carousel className="bg-white container" 
-                    swipeable={true}
-                    draggable={true}
-                    responsive={responsive}
-                    ssr={true} // means to render carousel on server-side.
-                    infinite={false}
-                    // autoPlay={this.props.deviceType !== "mobile" ? true : false}
-                    autoPlaySpeed={1000}
-                    transitionDuration={500}
-                    containerClass="carousel-container"
-                    removeArrowOnDeviceType={["tablet", "mobile"]}
-                    // deviceType={this.props.deviceType}
-                    itemClass="carousel-item-padding-40-px "
-                 >
-                    {filter.slice().map((product) => {
-                        return (
-                            <div className="m-2">
-                            <Card className="w-100 " key={product.id} style={{ width: '18rem',  marginLeft: '.5rem' }}>
-                            <div className="border border-primary text-truncate">
-                    <span class="badge bg-white text-primary " >CODE:HY5242DD23 GET-10% OFF </span>
-                  </div>
-                                <Card.Img variant="top" width="200px" height="200px" src={product.image} alt={product.title} />
-                                <Card.Body>
-                                    <Card.Title>{product.title.substring(0, 12)}</Card.Title>
-                                    <Card.Text>
-                                        ${product.price} 
-                                    </Card.Text>
-                                    
-                                    <Col className="text-center">  
-                                    <Button  variant="primary">view product</Button></Col>
-                                
-                                    <Card.Text>
-                                       <h5 style={{color:"orange"}} className="p-2"> {product.rating.rate} <i className="fa fa-star"></i></h5>
 
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card> </div> 
+            <Carousel className="bg-white container"
+                swipeable={true}
+                draggable={true}
+                responsive={responsive}
+                ssr={true} // means to render carousel on server-side.
+                infinite={false}
+                autoPlaySpeed={1000}
+                transitionDuration={500}
+                containerClass="carousel-container"
+                removeArrowOnDeviceType={["tablet", "mobile"]}
+            // itemClass="carousel-item-padding-40-px "
+            >
+                {filter.sort((a, b) => 0.5 - Math.random()).map((product) => {
+                    return (
+                        <div class="card m-3 border-0" style={{ width: "18rem;", cursor: 'pointer' }} key={product._id}
+                            onClick={() => goToProductDetails(product._id)}>
+                            {product.quantity < 4 && (
+                                <div className="border border-white text-truncate" >
+                                    <span class="badge bg-white text-white " >CODE:HY5242DD23 GET-10% OFF </span>
+                                </div>
+                            )}
+                            {product.quantity > 4 && (
+                                <div className="border border-primary text-truncate">
+                                    <span class="badge bg-white text-primary " >CODE:HY5242DD23 GET-10% OFF </span>
+                                </div>
+                            )}
+                            <img src={ImageUrl + product.imageSrc} class="card-img-top" height="200px" alt={product.title} />
+                            <div class="card-body">
+                                <h5 class="card-title fw-normal fs-6 text-truncate"> {product.title}... </h5>
+                                <p class="card-text fs-5">EGP <span class="fw-normal">{product.price}</span> </p>
+                                <p class="card-text justify-content-between">
+                                    <img width="70px" src="https://z.nooncdn.com/s/app/com/noon/images/fulfilment_express_v2-en.svg" class="img img-responsive" />
+                                    <span class="fa fa-star float-end" style={{ color: 'orange', fontWeight: 'bold' }} > {/*product.rating.rate*/}</span> </p>
 
-                        )
-                    })}
-                </Carousel>
-                    
-            )
+                            </div>
+                        </div>
+
+                    )
+                })}
+            </Carousel>
+
+        )
     }
 
-   
+
     const responsive = {
         desktop: {
-          breakpoint: { max: 3000, min: 1024 },
-          items: 7,
-          slidesToSlide: 1// optional, default to 1.
+            breakpoint: { max: 3000, min: 1024 },
+            items: 7,
+            slidesToSlide: 3// optional, default to 1.
         },
         tablet: {
-          breakpoint: { max: 1024, min: 464 },
-          items: 4,
-          slidesToSlide: 2 // optional, default to 1.
+            breakpoint: { max: 1024, min: 464 },
+            items: 4,
+            slidesToSlide: 2 // optional, default to 1.
         },
         mobile: {
-          breakpoint: { max: 464, min: 0 },
-          items: 2,
-          slidesToSlide: 1 // optional, default to 1.
+            breakpoint: { max: 464, min: 0 },
+            items: 2,
+            slidesToSlide: 1 // optional, default to 1.
         }
-      };
+    };
     return (
         <div >
             <div className="container my-5 py-5 bg-white justify-content-center">
                 <div className="row">
                     <div className="col-6 mb-5">
-                        <h5 className="display-6 fw-bolder"> {catName.toUpperCase()}</h5>
-                        
+                        <h5 className="display-6 fw-bolder"> {catName?catName:"All Products"}</h5>
+
                     </div>
                     <div className="col-6 mb-5 ">
-                        <button className="display-6 fw-bolder btn btn-outline-dark float-end "> <h5>Shop Now</h5></button>
-                       
+                        <button className="display-6 fw-bolder btn btn-outline-dark float-end fs-5 text-center" onClick={() => goToCategory()}>Shop Now </button>
+
                     </div>
                 </div>
                 <div className="row justify-content-center">

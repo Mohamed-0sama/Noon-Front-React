@@ -8,7 +8,7 @@ const Search = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage] = useState(5);
+  const [productsPerPage] = useState(16);
   let [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
@@ -32,21 +32,25 @@ const Search = () => {
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
   return (
-    <div className='container mt-5'>
+    <div className='container mt-5 bg-light' >
+      <div class="d-flex justify-content-center">
         <Pagination
         productsPerPage={productsPerPage}
         totalProducts={products.length}
         paginate={paginate}
       />
+      </div>
       <div className="row">
 
       <ProductsSearch products={currentProducts} loading={loading} />
       </div>
-      <Pagination
+      <div class="d-flex justify-content-center">
+        <Pagination
         productsPerPage={productsPerPage}
         totalProducts={products.length}
         paginate={paginate}
       />
+      </div>
     </div>
   );
 };

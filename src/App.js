@@ -15,6 +15,7 @@ import User from "./components/User/User";
 import Address from "./components/User/User components/Address";
 import Profile from "./components/User/User components/Profile";
 import Order from "./components/User/User components/Order";
+import OrderNew from "./components/User/User components/OrderNew";
 import Categoryslider from "./components/Categoryslider";
 
 import ProductDetails from "./components/ProductDetails/ProductDetails";
@@ -47,7 +48,8 @@ const App = () => {
         <Route path="/User" element={<Navigate replace to="/User/order" />} />
         <Route path="User" element={<User />}>
           {/* <Route index element={<Order />} /> */}
-          <Route path="/User/order" element={<Order />} />
+          {/* <Route path="/User/order" element={<Order />} /> */}
+          <Route path="/User/order" element={<OrderNew />} />
           <Route path="/User/address" element={<Address />} />
           <Route path="/User/profile" element={<Profile />} />
         </Route>

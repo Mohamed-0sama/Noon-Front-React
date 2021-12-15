@@ -19,9 +19,29 @@ const errMsg = type => {
     });
   };
   // const rate = () => {};
-const CollectionCreateForm = ({ visible, onCreate, onCancel }) => {
+
+
+const RatingProduct = ({prodId}) => {
+  console.log("pppppppppp",prodId);
+  // const rate = 
+
+
+  const [visible, setVisible] = useState(false);
+//   const [successMsg, setSuccessMsg] = useState("")
+  const onCreate = (values) => {
+    console.log("Received values of form: ", values);
+    setVisible(false);
+  };
+
+
+
+
+
+
+  const CollectionCreateForm = ({ visible, onCreate, onCancel }) => {
     // const [successMsg, setSuccessMsg] = useState("")
   const [form] = Form.useForm();
+
   return (
     <Modal
       visible={visible}
@@ -38,7 +58,15 @@ const CollectionCreateForm = ({ visible, onCreate, onCancel }) => {
           .then((values) => {
             // form.resetFields();
             onCreate(values);
-            axios.put(`http://localhost:5000/api/`, values).then(() => {successMsg('success')}).catch(() => {errMsg('error')})
+            axios.post(`${process.env.REACT_APP_API_URL}/api/ratings`, {
+              productId: prodId,
+              rating: [
+                {
+                  userId: localStorage.getItem("userId"),
+                  value: values.rate,
+                },
+              ],
+            }).then(() => {successMsg('success')}).catch(() => {errMsg('error')})
             // axios.put(`http://localhost:5000/api/`, values).then(() => {setSuccessMsg("ALL is Done"); setErrMsg("")})
           })
           .catch((info) => {
@@ -63,18 +91,6 @@ const CollectionCreateForm = ({ visible, onCreate, onCancel }) => {
     </Modal>
   );
 };
-
-const RatingProduct = () => {
-    //  OKK = ()=>{
-    //     // setSuccessMsg("thanks")
-    //     openNotificationWithIcon('success')
-    // }
-  const [visible, setVisible] = useState(false);
-//   const [successMsg, setSuccessMsg] = useState("")
-  const onCreate = (values) => {
-    console.log("Received values of form: ", values);
-    setVisible(false);
-  };
   
   return (
     <div>

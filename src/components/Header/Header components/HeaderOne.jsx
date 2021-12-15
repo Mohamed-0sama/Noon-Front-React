@@ -207,7 +207,7 @@ const HeaderOne = () => {
                
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/cart">
+                <Link className="nav-link" style={{position: 'relative'}} to="/cart">
                   <span>Cart</span>
                   <img
                     src={imagesUrl + "cart.svg"}
@@ -215,7 +215,7 @@ const HeaderOne = () => {
                     alt="cart"
                   />{
                     /*cart.length === 0?<span></span>:<div id="counter"><span>{cart.length}</span></div>*/
-                    quantity === 0?<span></span>:<div id="counter"><span>{quantity}</span></div>
+                    quantity === 0 || undefined ?<span></span>:<div id="counter" ><span>{quantity}</span></div>
                   }
                 </Link>
               </li>

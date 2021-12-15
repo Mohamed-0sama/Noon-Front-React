@@ -8,34 +8,31 @@ export default function AdsCarousel(){
         <Carousel.Item interval={2000}>
           <img
             className="d-block w-100"
-            src="https://k.nooncdn.com/cms/pages/20211128/ca1568e7ad28dd97a59766e548cd87bf/ar_mb-banner-01.gif"
+            src="https://k.nooncdn.com/cms/pages/20211212/c24ac50f729c67c7404df4e89a40ca64/en_banner-01.gif"
             alt="First slide"
           />
           <Carousel.Caption>
-            <h3>DEFACTO</h3>
-            <p>Keep your apparel awesome!</p>
+
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item interval={2000}>
           <img
             className="d-block w-100"
-            src="https://k.nooncdn.com/mon/1637952122660-ckwgqeihw4yt2shr7trnheb35.png"
+            src="https://k.nooncdn.com/mon/1638348471281-ckwnadn1t67pxt6r75nvlve5p.png"
             alt="Second slide"
           />
           <Carousel.Caption>
-            <h3>HUAWEI</h3>
-            <p>The new Technologies are in your hands!</p>
+
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item interval={2000}>
           <img
             className="d-block w-100"
-            src="https://k.nooncdn.com/mon/1638249736163-ckwlnlejn6khbsar7t5prdult.png"
+            src="https://k.nooncdn.com/cms/pages/20211102/31d79a360896f4f70f0baff1e7c2b047/en_banner-01.gif"
             alt="Third slide"
           />
           <Carousel.Caption>
-            <h3>MAYBE LINE</h3>
-            <p>Start your day with a pump of confidence! lady.</p>
+      
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

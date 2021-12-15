@@ -1,21 +1,15 @@
-// import React from 'react'
 import "./userHeader.scss";
+// import "./cart.css"
 import React, { useState } from "react";
-// import { Input, AutoComplete } from 'antd';
 import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-// import { mySearchContext, mySetSearchContext } from "../../../pages/Layout";
-// import { useContext } from "react";
-// import { HomeOutlined } from "@ant-design/icons";
-
-
+import { useSelector } from "react-redux";
+import { Navbar } from "react-bootstrap";
 const UserHeader = () => {
+  const quantity = useSelector(state => state.cart.quant)
   let navigate = useNavigate();
-  // const [search, setsearch] = useState("");
-  // const search = useContext(mySearchContext);
-  // const setSearch = useContext(mySetSearchContext);
   const [search, setSearch] = useState("");
   const [searchOption, setSearchOption] = useState([]);
 
@@ -44,13 +38,12 @@ const UserHeader = () => {
   };
   return (
     <div className="User-Header">
-      <nav
-        className="
-      navbar navbar-expand-sm navbar-light
-      position-sm-static
+      <Navbar
+        collapseOnSelect
+        expand="sm"
+        className="position-sm-static
       p-1
-      first__navbar
-    "
+      first__navbar"
       >
         <div className="container-fluid">
           <Link
@@ -63,18 +56,9 @@ const UserHeader = () => {
               alt="noon"
             />
           </Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      
+            <Navbar.Collapse id="responsive-navbar-nav">
             {/* id="navbarSupportedContent" */}
             <ul className="navbar-nav me-auto">
               <li className="nav-item">
@@ -84,18 +68,12 @@ const UserHeader = () => {
                   to="/"
                 >
                   <img src={imagesUrl + "noon-black-en.svg"} alt="noon" />
-                  {/* <img src="images/header/noon-black-en.svg" alt="noon" /> */}
+             
                 </Link>
               </li>
 
-              <li className="header__li__search">
-                {/* <input
-                    className="header__search me-2"
-                    type="search"
-                    aria-label="Search"
-                    placeholder="What are you looking for?"
-                  /> */}
-                {/* <label for="exampleDataList" className="form-label">Datalist example</label> */}
+              <li className="header_li_search">
+        
                 <input
                   className="form-control"
                   list="datalistOptions"
@@ -172,20 +150,24 @@ const UserHeader = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/User/cart">
-                  {/* <span>Cart</span> */}
+                {/* cart chnage */}
+              <Link className="nav-link" to="/cart" style={{position: 'relative'}}>
+                  <span>Cart</span>
                   <img
-                  className="mx-2"
                     src={imagesUrl + "cart.svg"}
-                    //  src="./images/categories/Home/Home-1.png"
+                    className="ms-2"
+                    //  src="images/header/cart.svg"
                     alt="cart"
-                  />
+                  />{
+                    
+                    quantity === 0 || undefined?<span></span>:<div id="counter" ><span>{quantity}</span></div>
+                  }
                 </Link>
               </li>
             </ul>
-          </div>
+            </Navbar.Collapse>
         </div>
-      </nav>
+      </Navbar>
     </div>
   );
 };

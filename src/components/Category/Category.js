@@ -8,6 +8,7 @@ function Category() {
   var selected_category = selectedCat; //Mobiles Electronics
   return (
     <div className="container-fluid">
+      {window.scrollTo(0, 0)}
       <div className="row">
         <Link to={`/search?category=${selected_category}`}>
           <img

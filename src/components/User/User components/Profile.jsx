@@ -42,6 +42,7 @@ const Profile = () => {
       })
       .catch((err) => {
         console.log(err);
+        // setErrMsg(err.message);
         setErrMsg(err.message);
       })
       .finally(() => {
@@ -75,13 +76,13 @@ const Profile = () => {
             setErrMsg("");
           })
           .catch((err) => {
-            setErrMsg(err.message);
+            setErrMsg("password doesn't match");
             console.log("new password error: " + err.message);
           });
       })
       .catch((err) => {
         error();
-        setErrMsg(err.message);
+        setErrMsg("password doesn't match");
       })
       .finally(() => setLoading(false));
   };

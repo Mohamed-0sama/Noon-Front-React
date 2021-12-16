@@ -16,7 +16,7 @@ function Home() {
       <Ads AdLink="https://k.nooncdn.com/cms/pages/20210331/fca271d901eb118de9a7dc0aa7293ab7/en_banner-01.png"/>
       <NewCategorySlider catName="Mobiles" />
       <Ads AdLink="https://k.nooncdn.com/cms/pages/20211014/307ffbd9af477d80173ca1e9b98bd9e2/en_strip-01.gif"/>
-      <NewCategorySlider  catName="men's clothing"/>
+      <NewCategorySlider  catName="Fashion"/>
       <div className="row"></div>
       {/* <Products /> */}
     </div>

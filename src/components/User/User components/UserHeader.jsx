@@ -160,7 +160,7 @@ const UserHeader = () => {
                     alt="cart"
                   />{
                     
-                    quantity === 0 || undefined?<span></span>:<div id="counter" ><span>{quantity}</span></div>
+                    (quantity === 0 || quantity === undefined)?<span></span>:<div id="counter" ><span>{quantity}</span></div>
                   }
                 </Link>
               </li>

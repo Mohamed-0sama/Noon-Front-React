@@ -11,6 +11,7 @@ export default function ProductDetails() {
   const ImageUrl = process.env.REACT_APP_API_URL + "/images/";
   let { id } = useParams();
   const [product, setProduct] = useState({});
+  const [rate, setRate] = useState(0);
   const [quantityWanted, setquantityWanted] = useState(1);
   const dispatch = useDispatch();
 
@@ -83,7 +84,10 @@ export default function ProductDetails() {
                         </div> */}
 
             <div className="sameline">
-              <p className="scoreTag pt-1"> 5.0 {/*product.rating*/}</p>
+              <p className="scoreTag pt-1">
+                {" "}
+                {rate} {/*product.rating*/}
+              </p>
               <p>
                 <a className="Rating" href="/#">
                   {" "}
@@ -253,7 +257,11 @@ export default function ProductDetails() {
                                         How are these calculated <i className="bi bi-question-circle"></i>
                                     </span>
                                 </p> */}
-                <Rating className="text-center" prdId={product._id}></Rating>
+                <Rating
+                  className="text-center"
+                  prdId={product._id}
+                  setRate={setRate}
+                ></Rating>
               </div>
             </div>
             <br />

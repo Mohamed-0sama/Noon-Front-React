@@ -201,11 +201,11 @@ const Login = () => {
             </label>
           </div>
           {renderError()}
-          <p>
+          {/* <p>
             <a href="./reset.html" className="text-decoration-none">
               Forgot your password?{" "}
             </a>
-          </p>
+          </p> */}
 
           <button
             className="w-100 btn btn-lg btn-primary fs-6 fw-bold"

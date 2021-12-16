@@ -50,7 +50,7 @@ const App = () => {
           {/* <Route index element={<Order />} /> */}
           {/* <Route path="/User/order" element={<Order />} /> */}
           <Route path="/User/order" element={<OrderNew />} />
-          <Route path="/User/address" element={<Address />} />
+          {/* <Route path="/User/address" element={<Address />} /> */}
           <Route path="/User/profile" element={<Profile />} />
         </Route>
         <Route path="/login" element={<Login />} />

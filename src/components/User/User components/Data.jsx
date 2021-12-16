@@ -71,13 +71,13 @@ const Data = () => {
             >
               <Link to="/User/order">Order</Link>
             </Menu.Item>
-            <Menu.Item
+            {/* <Menu.Item
               key="2"
               icon={<HomeOutlined />}
               onClick={() => componentName("Address")}
             >
               <Link to="/User/address">Address</Link>
-            </Menu.Item>
+            </Menu.Item> */}
 
             <Menu.Item
               key="3"

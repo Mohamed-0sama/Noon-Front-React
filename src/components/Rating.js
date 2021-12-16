@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import { Rate } from "antd";
 import axios from "axios";
 
-function Rating({ prdId }) {
-  const [rateValue, setRateValue] = useState(1);
+function Rating({ prdId, setRate }) {
+  const [rateValue, setRateValue] = useState(0);
 
   useEffect(() => {
     const getRatingbyId = async () => {
@@ -15,6 +15,7 @@ function Rating({ prdId }) {
           // handle success
           //console.log(response);
           setRateValue(response.data[0].avg_rating);
+          setRate(response.data[0].avg_rating);
         })
         .catch(function (error) {
           // handle error

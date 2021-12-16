@@ -44,7 +44,7 @@ const ProductsSearch = ({ products, loading }) => {
                                     <span class="badge bg-white text-primary " >CODE:HY5242DD23 GET-10% OFF </span>
                                 </div>
                             )}
-                            <img src={ImageUrl + product.imageSrc} class="card-img-top" height="200px" alt={product.title} />
+                            <img src={ImageUrl + product.imageSrc} class="card-img-top"  alt={product.title} />
                             <div class="card-body">
                                 <h5 class="card-title fw-normal fs-6 text-truncate"> {product.title}... </h5>
                                 <p class="card-text fs-5">EGP <span class="fw-normal">{product.price}</span> </p>

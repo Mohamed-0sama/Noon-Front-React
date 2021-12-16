@@ -32,7 +32,7 @@ const ProductsSearch = ({ products, loading }) => {
 
 
 <div className="col-md-3 mb-4">
-                <div class="card m-3 border-0" style={{ width: "18rem;", cursor: 'pointer' }} key={product._id}
+                <div class="card m-1 border-0" style={{ width: "18rem;", cursor: 'pointer' }} key={product._id}
                             onClick={() => goToProductDetails(product._id)}>
                             {product.quantity < 4 && (
                                 <div className="border border-white text-truncate" >
